@@ -2,204 +2,259 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ITAE Sports | Supercopa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ITAE Sports Pro | Supercopa</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;700&display=swap');
+    
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 
+    <style>
+        /* Estilos CSS Premium de Alta Competición */
         :root {
             --gold: #d4af37;
-            --dark-bg: #0a0a0a;
+            --gold-light: #f1d592;
+            --dark-bg: #03040a;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--dark-bg);
             color: white;
-            background-image: radial-gradient(circle at 50% -20%, #1e293b 0%, #0a0a0a 80%);
+            /* Degradado de fondo sutil "Champions" */
+            background-image: radial-gradient(circle at 50% -20%, #172a4f 0%, #03040a 80%);
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
         }
 
-        .font-title { font-family: 'Syncopate', sans-serif; }
+        .font-sport { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
 
+        /* Efecto Cristal (Glassmorphism) */
         .glass {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        .gold-border { border-color: var(--gold); }
         .text-gold { color: var(--gold); }
+        .gold-border { border-color: var(--gold); }
         
-        .active-tab {
+        /* Pestaña Activa */
+        .active-tab-filter {
             background: var(--gold);
             color: black;
             font-weight: bold;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
 
-        /* Animaciones */
-        .section-content { display: none; animation: slideIn 0.3s ease-out; }
-        .section-content.active { display: block; }
+        /* Navegación Inferior Flotante */
+        .bottom-nav {
+            background: rgba(20, 20, 30, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.8);
+        }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(10px); }
+        .nav-item { color: #888; transition: color 0.3s ease; }
+        .nav-item.active { color: var(--gold); }
+
+        /* Animaciones */
+        .page-section { display: none; animation: slideUp 0.3s ease-out; }
+        .page-section.active { display: block; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Estilo Equipos */
+        /* Desplegable Equipos */
         .team-card { transition: all 0.3s ease; }
-        .team-card.open { background: rgba(212, 175, 55, 0.05); border-color: var(--gold); }
-        .player-drawer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-        .team-card.open .player-drawer { max-height: 400px; padding-top: 1rem; }
+        .team-card.open { border-color: var(--gold); background: rgba(212, 175, 55, 0.05); }
+        .player-drawer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .team-card.open .player-drawer { max-height: 500px; padding-top: 1.5rem; }
     </style>
 </head>
 <body class="pb-28">
 
-    <header class="pt-8 px-6 flex flex-col items-center gap-6">
-        <img src="LOGO ITAE SPORTS.png" alt="ITAE SPORTS" class="h-12 object-contain opacity-90">
+    <header class="pt-8 px-6 flex flex-col items-center gap-6 relative z-10">
+        <img src="itaesports.png" alt="ITAE SPORTS" class="h-14 object-contain opacity-90 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
         
         <div class="relative group">
-            <div class="absolute -inset-1 bg-gold rounded-full blur opacity-20 group-hover:opacity-40 transition"></div>
-            <img src="LOGO SUPERCOPA ITAE.png" alt="Supercopa de ITAE" class="relative h-40 object-contain drop-shadow-2xl">
+            <div class="absolute -inset-2 bg-gold-light rounded-full blur-2xl opacity-10 group-hover:opacity-30 transition"></div>
+            <img src="supercopaitae.png" alt="Supercopa de ITAE" class="relative h-44 object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
         </div>
     </header>
 
-    <main class="max-w-md mx-auto px-4 mt-8">
+    <main class="max-w-md mx-auto px-4 mt-10 relative z-10">
         
-        <section id="partidos" class="section-content active">
-            <div class="flex gap-2 mb-6 overflow-x-auto pb-2 no-scrollbar">
-                <button onclick="filterMatches('jornadas', this)" class="active-tab px-5 py-2 rounded-full text-[10px] uppercase tracking-tighter whitespace-nowrap">Jornadas</button>
-                <button onclick="filterMatches('semis', this)" class="glass px-5 py-2 rounded-full text-[10px] uppercase tracking-tighter whitespace-nowrap">Semifinales</button>
-                <button onclick="filterMatches('final', this)" class="glass px-5 py-2 rounded-full text-[10px] uppercase tracking-tighter whitespace-nowrap">Finales</button>
+        <section id="section-partidos" class="page-section active">
+            
+            <div class="flex justify-between items-end mb-6">
+                <h2 class="font-sport text-xs tracking-widest text-gold-light">Calendario</h2>
+                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">SEASON 2024</span>
             </div>
 
-            <div id="match-list" class="space-y-4">
+            <div class="flex gap-2 mb-6 overflow-x-auto pb-3 no-scrollbar border-b border-white/5">
+                <button onclick="renderMatches('jornadas', this)" class="active-tab-filter glass px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap">Jornadas (1-6)</button>
+                <button onclick="renderMatches('semis', this)" class="glass text-gray-400 px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap">Semifinales</button>
+                <button onclick="renderMatches('final', this)" class="glass text-gray-400 px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap">Finales</button>
+            </div>
+
+            <div id="match-list" class="space-y-5">
                 </div>
         </section>
 
-        <section id="equipos" class="section-content">
-            <h2 class="font-title text-sm mb-6 text-gold tracking-widest uppercase">Plantillas Oficiales</h2>
+        <section id="section-equipos" class="page-section">
+            
+            <div class="flex justify-between items-end mb-6">
+                <h2 class="font-sport text-xs tracking-widest text-gold-light">Plantillas Oficiales</h2>
+                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Season 2024</span>
+            </div>
             
             <div class="space-y-4">
-                <div class="team-card glass rounded-2xl p-4" onclick="this.classList.toggle('open')">
+                
+                <div class="team-card glass rounded-2xl p-5" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
-                        <span class="font-title text-xs">LAS GACELAS</span>
+                        <div class="flex items-center gap-4">
+                            <img src="lasgacelas.png" alt="Las Gacelas" class="w-12 h-12 object-contain drop-shadow-md">
+                            <h3 class="font-sport text-xs tracking-wider">Las Gacelas</h3>
+                        </div>
                         <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
                     </div>
-                    <div class="player-drawer grid grid-cols-1 gap-2">
-                        <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg text-sm italic">
-                            <span class="text-gold font-bold">01</span> Isaac
-                        </div>
-                        <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg text-sm italic">
-                            <span class="text-gold font-bold">02</span> Valentino
-                        </div>
-                        <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg text-sm italic">
-                            <span class="text-gold font-bold">03</span> Hiram
-                        </div>
-                        <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg text-sm italic">
-                            <span class="text-gold font-bold">04</span> Gacela
-                        </div>
-                        <div class="flex items-center gap-3 bg-white/10 p-2 rounded-lg text-sm italic border border-gold/30 text-gold">
-                            <span class="font-bold">CAP</span> Pepe
+                    <div class="player-drawer grid grid-cols-1 gap-3">
+                        <div class="text-sm italic p-3 bg-white/5 rounded-lg">Isaac, Valentino, Hiram, Gacela</div>
+                        <div class="flex items-center gap-3 bg-white/10 p-3 rounded-lg text-sm italic border border-gold/40 text-gold shadow-md">
+                            <span class="font-bold text-xs uppercase font-sport">CAP</span> Pepe
                         </div>
                     </div>
                 </div>
 
-                <div class="team-card glass rounded-2xl p-4" onclick="this.classList.toggle('open')">
+                <div class="team-card glass rounded-2xl p-5" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
-                        <span class="font-title text-xs">BROCA JUNIORS</span>
+                        <div class="flex items-center gap-4">
+                            <img src="brocajuniors.png" alt="Broca Juniors" class="w-12 h-12 object-contain drop-shadow-md">
+                            <h3 class="font-sport text-xs tracking-wider">Broca Juniors</h3>
+                        </div>
                         <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
                     </div>
-                    <div class="player-drawer grid grid-cols-1 gap-2">
-                        <div class="p-2 bg-white/5 rounded text-sm italic">Rafa, Israel, Salva, William, Jorge</div>
+                    <div class="player-drawer grid grid-cols-1 gap-3">
+                        <div class="text-sm italic p-3 bg-white/5 rounded-lg">Rafa, Israel, Salva, William, Jorge</div>
                     </div>
                 </div>
 
-                <div class="team-card glass rounded-2xl p-4" onclick="this.classList.toggle('open')">
+                <div class="team-card glass rounded-2xl p-5" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
-                        <span class="font-title text-xs">ASTON PILA</span>
+                        <div class="flex items-center gap-4">
+                            <img src="astonpila.png" alt="Aston Pila" class="w-12 h-12 object-contain drop-shadow-md">
+                            <h3 class="font-sport text-xs tracking-wider">Aston Pila</h3>
+                        </div>
                         <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
                     </div>
-                    <div class="player-drawer grid grid-cols-1 gap-2">
-                        <div class="p-2 bg-white/5 rounded text-sm italic">Santi, Iván, Serhi, Moad, Jesús</div>
+                    <div class="player-drawer grid grid-cols-1 gap-3">
+                        <div class="text-sm italic p-3 bg-white/5 rounded-lg">Santi, Iván, Serhi, Moad, Jesús</div>
                     </div>
                 </div>
 
-                <div class="team-card glass rounded-2xl p-4" onclick="this.classList.toggle('open')">
+                <div class="team-card glass rounded-2xl p-5" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
-                        <span class="font-title text-xs">PICK AND PLACE</span>
+                        <div class="flex items-center gap-4">
+                            <img src="pickandplace.png" alt="Pick and Place" class="w-12 h-12 object-contain drop-shadow-md">
+                            <h3 class="font-sport text-xs tracking-wider">Pick and Place</h3>
+                        </div>
                         <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
                     </div>
-                    <div class="player-drawer grid grid-cols-1 gap-2">
-                        <div class="p-2 bg-white/5 rounded text-sm italic font-bold text-pink-400">María, Pablo, Christopher, Ester, Juan</div>
+                    <div class="player-drawer grid grid-cols-1 gap-3">
+                        <div class="text-sm italic p-3 bg-white/5 rounded-lg text-gold font-bold">Pablo, María, Christopher, Ester, Juan</div>
                     </div>
                 </div>
+
             </div>
         </section>
     </main>
 
-    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-xs h-16 glass rounded-full flex justify-around items-center px-6 z-50 border border-gold/20 shadow-2xl">
-        <button onclick="showTab('partidos', this)" class="text-gold transition-all flex flex-col items-center">
-            <i class="fas fa-calendar-day text-lg"></i>
-            <span class="text-[8px] uppercase mt-1 font-bold">Partidos</span>
+    <nav class="bottom-nav fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm h-18 glass rounded-full flex justify-around items-center px-8 z-50 border border-gold/10">
+        <button onclick="showPage('partidos', this)" id="nav-partidos" class="nav-item active flex flex-col items-center gap-1.5 transition-all">
+            <i class="fas fa-trophy text-xl"></i>
+            <span class="text-[9px] uppercase mt-1 font-bold font-sport tracking-wider">Torneo</span>
         </button>
-        <button onclick="showTab('equipos', this)" class="text-gray-500 transition-all flex flex-col items-center">
-            <i class="fas fa-shield-halved text-lg"></i>
-            <span class="text-[8px] uppercase mt-1 font-bold">Equipos</span>
+        <button onclick="showPage('equipos', this)" id="nav-equipos" class="nav-item flex flex-col items-center gap-1.5 transition-all">
+            <i class="fas fa-users-cog text-xl"></i>
+            <span class="text-[9px] uppercase mt-1 font-bold font-sport tracking-wider">Equipos</span>
         </button>
     </nav>
 
     <script>
+        // DATOS DE LOS PARTIDOS (He asociado los equipos a sus fotos)
         const matches = {
             jornadas: [
-                { id: 1, t1: 'Las Gacelas', t2: 'Broca Jrs', time: '18:00', title: 'J1' },
-                { id: 2, t1: 'Aston Pila', t2: 'Pick & Place', time: '18:15', title: 'J2' },
-                { id: 3, t1: 'Las Gacelas', t2: 'Aston Pila', time: '18:30', title: 'J3' },
-                { id: 4, t1: 'Broca Jrs', t2: 'Pick & Place', time: '18:45', title: 'J4' },
-                { id: 5, t1: 'Pick & Place', t2: 'Las Gacelas', time: '19:00', title: 'J5' },
-                { id: 6, t1: 'Broca Jrs', t2: 'Aston Pila', time: '19:15', title: 'J6' }
+                { id: 1, label: 'J1', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Broca Jrs', f2: 'brocajuniors.png', time: '18:00' },
+                { id: 2, label: 'J2', t1: 'Aston Pila', f1: 'astonpila.png', t2: 'Pick & Place', f2: 'pickandplace.png', time: '18:15' },
+                { id: 3, label: 'J3', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Aston Pila', f2: 'astonpila.png', time: '18:30' },
+                { id: 4, label: 'J4', t1: 'Broca Jrs', f1: 'brocajuniors.png', t2: 'Pick & Place', f2: 'pickandplace.png', time: '18:45' },
+                { id: 5, label: 'J5', t1: 'Pick & Place', f1: 'pickandplace.png', t2: 'Las Gacelas', f2: 'lasgacelas.png', time: '19:00' },
+                { id: 6, label: 'J6', t1: 'Broca Jrs', f1: 'brocajuniors.png', t2: 'Aston Pila', f2: 'astonpila.png', time: '19:15' }
             ],
             semis: [
-                { id: 7, t1: '1º Clasificado', t2: '4º Clasificado', time: '20:00', title: 'Semi 1' },
-                { id: 8, t1: '2º Clasificado', t2: '3º Clasificado', time: '20:15', title: 'Semi 2' }
+                { id: 7, label: 'Semi 1', t1: '1º Clasificado', f1: 'supercopaitae.png', t2: '4º Clasificado', f2: 'supercopaitae.png', time: '20:00' },
+                { id: 8, label: 'Semi 2', t1: '2º Clasificado', f1: 'supercopaitae.png', t2: '3º Clasificado', f2: 'supercopaitae.png', time: '20:15' }
             ],
             final: [
-                { id: 9, t1: 'Perdedor S1', t2: 'Perdedor S2', time: '21:00', title: '3º/4º' },
-                { id: 10, t1: 'Ganador S1', t2: 'Ganador S2', time: '21:30', title: 'Gran Final', gold: true }
+                { id: 9, label: 'Bronce', t1: 'Perdedor S1', f1: 'supercopaitae.png', t2: 'Perdedor S2', f2: 'supercopaitae.png', time: '21:00' },
+                { id: 10, label: 'Final', t1: 'Ganador S1', f1: 'supercopaitae.png', t2: 'Ganador S2', f2: 'supercopaitae.png', time: '21:30', isFinal: true }
             ]
         };
 
-        function filterMatches(group, btn) {
+        // Función para renderizar los partidos en pantalla
+        function renderMatches(group, btn) {
             const container = document.getElementById('match-list');
             container.innerHTML = matches[group].map(m => `
-                <div class="glass p-4 rounded-xl relative overflow-hidden ${m.gold ? 'border-gold/50 border shadow-[0_0_15px_rgba(212,175,55,0.2)]' : ''}">
-                    <div class="flex justify-between items-center gap-2">
-                        <div class="flex-1 text-center font-bold text-sm uppercase italic">${m.t1}</div>
-                        <div class="flex flex-col items-center px-3">
-                            <span class="text-[8px] text-gold font-bold mb-1 tracking-widest">${m.title}</span>
-                            <div class="bg-gold text-black px-3 py-1 rounded text-[10px] font-black italic shadow-lg">VS</div>
-                            <span class="text-[9px] mt-1 font-bold opacity-60">${m.time}</span>
+                <div class="glass p-5 rounded-3xl relative overflow-hidden ${m.isFinal ? 'border border-gold shadow-[0_0_20px_rgba(212,175,55,0.3)]' : ''}">
+                    ${m.isFinal ? '<div class="absolute top-0 right-0 bg-gold text-black px-4 py-1.5 text-[8px] uppercase font-bold font-sport tracking-widest rounded-bl-xl shadow-lg">El Gran Partido</div>' : ''}
+                    
+                    <div class="flex justify-between items-center gap-1">
+                        <div class="flex-1 flex flex-col items-center gap-2">
+                            <img src="${m.f1}" alt="${m.t1}" class="w-12 h-12 object-contain drop-shadow-md">
+                            <p class="font-bold text-sm tracking-tighter uppercase text-center">${m.t1}</p>
                         </div>
-                        <div class="flex-1 text-center font-bold text-sm uppercase italic">${m.t2}</div>
+                        
+                        <div class="flex flex-col items-center px-4 w-28">
+                            <span class="text-[9px] text-gold font-bold mb-2 tracking-widest font-sport">${m.label}</span>
+                            <div class="bg-white/10 text-gold-light px-5 py-2 rounded-lg font-black italic tracking-widest shadow-xl border border-white/5 text-xs">VS</div>
+                            <span class="text-[10px] mt-2 font-bold opacity-70">${m.time} h</span>
+                        </div>
+                        
+                        <div class="flex-1 flex flex-col items-center gap-2">
+                            <img src="${m.f2}" alt="${m.t2}" class="w-12 h-12 object-contain drop-shadow-md">
+                            <p class="font-bold text-sm tracking-tighter uppercase text-center">${m.t2}</p>
+                        </div>
                     </div>
                 </div>
             `).join('');
 
-            document.querySelectorAll('#partidos button').forEach(b => b.className = 'glass px-5 py-2 rounded-full text-[10px] uppercase tracking-tighter whitespace-nowrap');
-            btn.className = 'active-tab px-5 py-2 rounded-full text-[10px] uppercase tracking-tighter whitespace-nowrap';
+            // Actualizar estilo de botones de filtro
+            document.querySelectorAll('#section-partidos button').forEach(b => {
+                b.className = 'glass text-gray-400 px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap';
+            });
+            btn.className = 'active-tab-filter glass px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap';
         }
 
-        function showTab(id, btn) {
-            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            document.querySelectorAll('nav button').forEach(b => b.className = 'text-gray-500 transition-all flex flex-col items-center');
-            btn.className = 'text-gold transition-all flex flex-col items-center';
+        // Función para cambiar entre Pestañas Principales (Torneo/Equipos)
+        function showPage(pageName, btn) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            // Mostrar la seleccionada
+            document.getElementById('section-' + pageName).classList.add('active');
+            
+            // Actualizar color de la navegación inferior
+            document.querySelectorAll('nav .nav-item').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
         }
 
-        // Carga inicial
-        filterMatches('jornadas', document.querySelector('#partidos button'));
+        // Carga inicial: Mostrar las jornadas por defecto
+        renderMatches('jornadas', document.querySelector('#section-partidos button'));
     </script>
 </body>
 </html>
