@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITAE Sports | Supercopa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;700&display=swap');
+
+        :root {
+            --gold: #d4af37;
+            --dark-bg: #0a0a0a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            background-image: radial-gradient(circle at 50% -20%, #1e293b 0%, #0a0a0a 80%);
+        }
+
+        .font-title { font-family: 'Syncopate', sans-serif; }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gold-border { border-color: var(--gold); }
+        .text-gold { color: var(--gold); }
+        
+        .active-tab {
+            background: var(--gold);
+            color: black;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Animaciones */
+        .section-content { display: none; animation: slideIn 0.3s ease-out; }
+        .section-content.active { display: block; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilo Equipos */
+        .team-card { transition: all 0.3s ease; }
+        .team-card.open { background: rgba(212, 175, 55, 0.05); border-color: var(--gold); }
+        .player-drawer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .team-card.open .player-drawer { max-height: 400px; padding-top: 1rem; }
+    </style>
+</head>
+<body class="pb-28">
+
+    <header class="pt-8 px-6 flex flex-col items-center gap-6">
+        <img src="LOGO ITAE SPORTS.png" alt="ITAE SPORTS" class="h-12 object-contain opacity-90">
+        
+        <div class="relative group">
+            <div class="absolute -inset-1 bg-gold rounded-full blur opacity-20 group-hover:opacity-40 transition"></div>
+            <img src="LOGO SUPERCOPA ITAE.png" alt="Supercopa de ITAE" class="relative h-40 object-contain drop-shadow-2xl">
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-4 mt-8">
+        
+        <section id="partidos" class="section-content active">
+            <div class="flex gap-2 mb-6 overflow-x-auto pb-2 no-scrollbar">
+                <button onclick="filterMatches('jornadas', this)" class="active-tab px-5 py-2 rounded-full text-[10px] uppercase tracking-tighter whitespace-nowrap">Jornadas</button>
+                <button onclick="filterMatches('semis', this)" class="glass px-5 py-2 rounded-full text-[10px] uppercase tracking-tighter whitespace-nowrap">Semifinales</button>
+                <button onclick="filterMatches('final', this)" class="glass px-5 py-2 rounded-full text-[10px] uppercase tracking-tighter whitespace-nowrap">Finales</button>
+            </div>
+
+            <div id="match-list" class="space-y-4">
+                </div>
+        </section>
+
+        <section id="equipos" class="section-content">
+            <h2 class="font-title text-sm mb-6 text-gold tracking-widest uppercase">Plantillas Oficiales</h2>
+            
+            <div class="space-y-4">
+                <div class="team-card glass rounded-2xl p-4" onclick="this.classList.toggle('open')">
+                    <div class="flex justify-between items-center">
+                        <span class="font-title text-xs">LAS GACELAS</span>
+                        <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
+                    </div>
+                    <div class="player-drawer grid grid-cols-1 gap-2">
+                        <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg text-sm italic">
+                            <span class="text-gold font-bold">01</span> Isaac
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg text-sm italic">
+                            <span class="text-gold font-bold">02</span> Valentino
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg text-sm italic">
+                            <span class="text-gold font-bold">03</span> Hiram
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg text-sm italic">
+                            <span class="text-gold font-bold">04</span> Gacela
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/10 p-2 rounded-lg text-sm italic border border-gold/30 text-gold">
+                            <span class="font-bold">CAP</span> Pepe
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card glass rounded-2xl p-4" onclick="this.classList.toggle('open')">
+                    <div class="flex justify-between items-center">
+                        <span class="font-title text-xs">BROCA JUNIORS</span>
+                        <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
+                    </div>
+                    <div class="player-drawer grid grid-cols-1 gap-2">
+                        <div class="p-2 bg-white/5 rounded text-sm italic">Rafa, Israel, Salva, William, Jorge</div>
+                    </div>
+                </div>
+
+                <div class="team-card glass rounded-2xl p-4" onclick="this.classList.toggle('open')">
+                    <div class="flex justify-between items-center">
+                        <span class="font-title text-xs">ASTON PILA</span>
+                        <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
+                    </div>
+                    <div class="player-drawer grid grid-cols-1 gap-2">
+                        <div class="p-2 bg-white/5 rounded text-sm italic">Santi, Iván, Serhi, Moad, Jesús</div>
+                    </div>
+                </div>
+
+                <div class="team-card glass rounded-2xl p-4" onclick="this.classList.toggle('open')">
+                    <div class="flex justify-between items-center">
+                        <span class="font-title text-xs">PICK AND PLACE</span>
+                        <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
+                    </div>
+                    <div class="player-drawer grid grid-cols-1 gap-2">
+                        <div class="p-2 bg-white/5 rounded text-sm italic font-bold text-pink-400">María, Pablo, Christopher, Ester, Juan</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-xs h-16 glass rounded-full flex justify-around items-center px-6 z-50 border border-gold/20 shadow-2xl">
+        <button onclick="showTab('partidos', this)" class="text-gold transition-all flex flex-col items-center">
+            <i class="fas fa-calendar-day text-lg"></i>
+            <span class="text-[8px] uppercase mt-1 font-bold">Partidos</span>
+        </button>
+        <button onclick="showTab('equipos', this)" class="text-gray-500 transition-all flex flex-col items-center">
+            <i class="fas fa-shield-halved text-lg"></i>
+            <span class="text-[8px] uppercase mt-1 font-bold">Equipos</span>
+        </button>
+    </nav>
+
+    <script>
+        const matches = {
+            jornadas: [
+                { id: 1, t1: 'Las Gacelas', t2: 'Broca Jrs', time: '18:00', title: 'J1' },
+                { id: 2, t1: 'Aston Pila', t2: 'Pick & Place', time: '18:15', title: 'J2' },
+                { id: 3, t1: 'Las Gacelas', t2: 'Aston Pila', time: '18:30', title: 'J3' },
+                { id: 4, t1: 'Broca Jrs', t2: 'Pick & Place', time: '18:45', title: 'J4' },
+                { id: 5, t1: 'Pick & Place', t2: 'Las Gacelas', time: '19:00', title: 'J5' },
+                { id: 6, t1: 'Broca Jrs', t2: 'Aston Pila', time: '19:15', title: 'J6' }
+            ],
+            semis: [
+                { id: 7, t1: '1º Clasificado', t2: '4º Clasificado', time: '20:00', title: 'Semi 1' },
+                { id: 8, t1: '2º Clasificado', t2: '3º Clasificado', time: '20:15', title: 'Semi 2' }
+            ],
+            final: [
+                { id: 9, t1: 'Perdedor S1', t2: 'Perdedor S2', time: '21:00', title: '3º/4º' },
+                { id: 10, t1: 'Ganador S1', t2: 'Ganador S2', time: '21:30', title: 'Gran Final', gold: true }
+            ]
+        };
+
+        function filterMatches(group, btn) {
+            const container = document.getElementById('match-list');
+            container.innerHTML = matches[group].map(m => `
+                <div class="glass p-4 rounded-xl relative overflow-hidden ${m.gold ? 'border-gold/50 border shadow-[0_0_15px_rgba(212,175,55,0.2)]' : ''}">
+                    <div class="flex justify-between items-center gap-2">
+                        <div class="flex-1 text-center font-bold text-sm uppercase italic">${m.t1}</div>
+                        <div class="flex flex-col items-center px-3">
+                            <span class="text-[8px] text-gold font-bold mb-1 tracking-widest">${m.title}</span>
+                            <div class="bg-gold text-black px-3 py-1 rounded text-[10px] font-black italic shadow-lg">VS</div>
+                            <span class="text-[9px] mt-1 font-bold opacity-60">${m.time}</span>
+                        </div>
+                        <div class="flex-1 text-center font-bold text-sm uppercase italic">${m.t2}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('#partidos button').forEach(b => b.className = 'glass px-5 py-2 rounded-full text-[10px] uppercase tracking-tighter whitespace-nowrap');
+            btn.className = 'active-tab px-5 py-2 rounded-full text-[10px] uppercase tracking-tighter whitespace-nowrap';
+        }
+
+        function showTab(id, btn) {
+            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('nav button').forEach(b => b.className = 'text-gray-500 transition-all flex flex-col items-center');
+            btn.className = 'text-gold transition-all flex flex-col items-center';
+        }
+
+        // Carga inicial
+        filterMatches('jornadas', document.querySelector('#partidos button'));
+    </script>
+</body>
+</html>
