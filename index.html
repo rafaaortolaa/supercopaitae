@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Estilos CSS Premium de Alta Competición */
         :root {
             --gold: #d4af37;
             --gold-light: #f1d592;
@@ -23,7 +22,6 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--dark-bg);
             color: white;
-            /* Degradado de fondo sutil "Champions" */
             background-image: radial-gradient(circle at 50% -20%, #172a4f 0%, #03040a 80%);
             -webkit-tap-highlight-color: transparent;
             overflow-x: hidden;
@@ -31,7 +29,6 @@
 
         .font-sport { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
 
-        /* Efecto Cristal (Glassmorphism) */
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
@@ -40,9 +37,6 @@
         }
 
         .text-gold { color: var(--gold); }
-        .gold-border { border-color: var(--gold); }
-        
-        /* Pestaña Activa */
         .active-tab-filter {
             background: var(--gold);
             color: black;
@@ -50,7 +44,6 @@
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
 
-        /* Navegación Inferior Flotante */
         .bottom-nav {
             background: rgba(20, 20, 30, 0.8);
             backdrop-filter: blur(20px);
@@ -61,7 +54,6 @@
         .nav-item { color: #888; transition: color 0.3s ease; }
         .nav-item.active { color: var(--gold); }
 
-        /* Animaciones */
         .page-section { display: none; animation: slideUp 0.3s ease-out; }
         .page-section.active { display: block; }
 
@@ -70,18 +62,27 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Desplegable Equipos */
         .team-card { transition: all 0.3s ease; }
         .team-card.open { border-color: var(--gold); background: rgba(212, 175, 55, 0.05); }
         .player-drawer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-        .team-card.open .player-drawer { max-height: 500px; padding-top: 1.5rem; }
+        .team-card.open .player-drawer { max-height: 600px; padding-top: 1.5rem; }
+
+        /* Estilo para la lista vertical de jugadores */
+        .player-item {
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .player-item:last-child { border-bottom: none; }
+        .captain { color: var(--gold); font-weight: 700; border-left: 3px solid var(--gold); padding-left: 10px; background: rgba(212, 175, 55, 0.05); }
     </style>
 </head>
 <body class="pb-28">
 
     <header class="pt-8 px-6 flex flex-col items-center gap-6 relative z-10">
         <img src="itaesports.png" alt="ITAE SPORTS" class="h-14 object-contain opacity-90 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
-        
         <div class="relative group">
             <div class="absolute -inset-2 bg-gold-light rounded-full blur-2xl opacity-10 group-hover:opacity-30 transition"></div>
             <img src="supercopaitae.png" alt="Supercopa de ITAE" class="relative h-44 object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
@@ -91,31 +92,25 @@
     <main class="max-w-md mx-auto px-4 mt-10 relative z-10">
         
         <section id="section-partidos" class="page-section active">
-            
             <div class="flex justify-between items-end mb-6">
                 <h2 class="font-sport text-xs tracking-widest text-gold-light">Calendario</h2>
                 <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">SEASON 2024</span>
             </div>
-
             <div class="flex gap-2 mb-6 overflow-x-auto pb-3 no-scrollbar border-b border-white/5">
-                <button onclick="renderMatches('jornadas', this)" class="active-tab-filter glass px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap">Jornadas (1-6)</button>
+                <button onclick="renderMatches('jornadas', this)" class="active-tab-filter glass px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap">Jornadas</button>
                 <button onclick="renderMatches('semis', this)" class="glass text-gray-400 px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap">Semifinales</button>
                 <button onclick="renderMatches('final', this)" class="glass text-gray-400 px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap">Finales</button>
             </div>
-
-            <div id="match-list" class="space-y-5">
-                </div>
+            <div id="match-list" class="space-y-5"></div>
         </section>
 
         <section id="section-equipos" class="page-section">
-            
             <div class="flex justify-between items-end mb-6">
                 <h2 class="font-sport text-xs tracking-widest text-gold-light">Plantillas Oficiales</h2>
                 <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Season 2024</span>
             </div>
             
             <div class="space-y-4">
-                
                 <div class="team-card glass rounded-2xl p-5" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-4">
@@ -124,10 +119,13 @@
                         </div>
                         <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
                     </div>
-                    <div class="player-drawer grid grid-cols-1 gap-3">
-                        <div class="text-sm italic p-3 bg-white/5 rounded-lg">Isaac, Valentino, Hiram, Gacela</div>
-                        <div class="flex items-center gap-3 bg-white/10 p-3 rounded-lg text-sm italic border border-gold/40 text-gold shadow-md">
-                            <span class="font-bold text-xs uppercase font-sport">CAP</span> Pepe
+                    <div class="player-drawer">
+                        <div class="glass rounded-xl overflow-hidden">
+                            <div class="player-item captain"><span>Pepe</span><span class="text-[10px] font-sport">CAPITÁN</span></div>
+                            <div class="player-item"><span>Isaac</span></div>
+                            <div class="player-item"><span>Valentino</span></div>
+                            <div class="player-item"><span>Hiram</span></div>
+                            <div class="player-item"><span>Gacela</span></div>
                         </div>
                     </div>
                 </div>
@@ -140,8 +138,14 @@
                         </div>
                         <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
                     </div>
-                    <div class="player-drawer grid grid-cols-1 gap-3">
-                        <div class="text-sm italic p-3 bg-white/5 rounded-lg">Rafa, Israel, Salva, William, Jorge</div>
+                    <div class="player-drawer">
+                        <div class="glass rounded-xl overflow-hidden">
+                            <div class="player-item captain"><span>Jorge</span><span class="text-[10px] font-sport">CAPITÁN</span></div>
+                            <div class="player-item"><span>Rafa</span></div>
+                            <div class="player-item"><span>Israel</span></div>
+                            <div class="player-item"><span>Salva</span></div>
+                            <div class="player-item"><span>William</span></div>
+                        </div>
                     </div>
                 </div>
 
@@ -153,8 +157,14 @@
                         </div>
                         <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
                     </div>
-                    <div class="player-drawer grid grid-cols-1 gap-3">
-                        <div class="text-sm italic p-3 bg-white/5 rounded-lg">Santi, Iván, Serhi, Moad, Jesús</div>
+                    <div class="player-drawer">
+                        <div class="glass rounded-xl overflow-hidden">
+                            <div class="player-item captain"><span>Santi</span><span class="text-[10px] font-sport">CAPITÁN</span></div>
+                            <div class="player-item"><span>Iván</span></div>
+                            <div class="player-item"><span>Serhi</span></div>
+                            <div class="player-item"><span>Moad</span></div>
+                            <div class="player-item"><span>Jesús</span></div>
+                        </div>
                     </div>
                 </div>
 
@@ -166,11 +176,16 @@
                         </div>
                         <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
                     </div>
-                    <div class="player-drawer grid grid-cols-1 gap-3">
-                        <div class="text-sm italic p-3 bg-white/5 rounded-lg text-gold font-bold">Pablo, María, Christopher, Ester, Juan</div>
+                    <div class="player-drawer">
+                        <div class="glass rounded-xl overflow-hidden">
+                            <div class="player-item captain"><span>María</span><span class="text-[10px] font-sport">CAPITÁN</span></div>
+                            <div class="player-item"><span>Pablo</span></div>
+                            <div class="player-item"><span>Christopher</span></div>
+                            <div class="player-item"><span>Ester</span></div>
+                            <div class="player-item"><span>Juan</span></div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </section>
     </main>
@@ -187,7 +202,6 @@
     </nav>
 
     <script>
-        // DATOS DE LOS PARTIDOS (He asociado los equipos a sus fotos)
         const matches = {
             jornadas: [
                 { id: 1, label: 'J1', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Broca Jrs', f2: 'brocajuniors.png', time: '18:00' },
@@ -198,8 +212,8 @@
                 { id: 6, label: 'J6', t1: 'Broca Jrs', f1: 'brocajuniors.png', t2: 'Aston Pila', f2: 'astonpila.png', time: '19:15' }
             ],
             semis: [
-                { id: 7, label: 'Semi 1', t1: '1º Clasificado', f1: 'supercopaitae.png', t2: '4º Clasificado', f2: 'supercopaitae.png', time: '20:00' },
-                { id: 8, label: 'Semi 2', t1: '2º Clasificado', f1: 'supercopaitae.png', t2: '3º Clasificado', f2: 'supercopaitae.png', time: '20:15' }
+                { id: 7, label: 'Semi 1', t1: '1º Clasif', f1: 'supercopaitae.png', t2: '4º Clasif', f2: 'supercopaitae.png', time: '20:00' },
+                { id: 8, label: 'Semi 2', t1: '2º Clasif', f1: 'supercopaitae.png', t2: '3º Clasif', f2: 'supercopaitae.png', time: '20:15' }
             ],
             final: [
                 { id: 9, label: 'Bronce', t1: 'Perdedor S1', f1: 'supercopaitae.png', t2: 'Perdedor S2', f2: 'supercopaitae.png', time: '21:00' },
@@ -207,25 +221,21 @@
             ]
         };
 
-        // Función para renderizar los partidos en pantalla
         function renderMatches(group, btn) {
             const container = document.getElementById('match-list');
             container.innerHTML = matches[group].map(m => `
                 <div class="glass p-5 rounded-3xl relative overflow-hidden ${m.isFinal ? 'border border-gold shadow-[0_0_20px_rgba(212,175,55,0.3)]' : ''}">
                     ${m.isFinal ? '<div class="absolute top-0 right-0 bg-gold text-black px-4 py-1.5 text-[8px] uppercase font-bold font-sport tracking-widest rounded-bl-xl shadow-lg">El Gran Partido</div>' : ''}
-                    
                     <div class="flex justify-between items-center gap-1">
                         <div class="flex-1 flex flex-col items-center gap-2">
                             <img src="${m.f1}" alt="${m.t1}" class="w-12 h-12 object-contain drop-shadow-md">
                             <p class="font-bold text-sm tracking-tighter uppercase text-center">${m.t1}</p>
                         </div>
-                        
                         <div class="flex flex-col items-center px-4 w-28">
                             <span class="text-[9px] text-gold font-bold mb-2 tracking-widest font-sport">${m.label}</span>
                             <div class="bg-white/10 text-gold-light px-5 py-2 rounded-lg font-black italic tracking-widest shadow-xl border border-white/5 text-xs">VS</div>
                             <span class="text-[10px] mt-2 font-bold opacity-70">${m.time} h</span>
                         </div>
-                        
                         <div class="flex-1 flex flex-col items-center gap-2">
                             <img src="${m.f2}" alt="${m.t2}" class="w-12 h-12 object-contain drop-shadow-md">
                             <p class="font-bold text-sm tracking-tighter uppercase text-center">${m.t2}</p>
@@ -233,27 +243,19 @@
                     </div>
                 </div>
             `).join('');
-
-            // Actualizar estilo de botones de filtro
             document.querySelectorAll('#section-partidos button').forEach(b => {
                 b.className = 'glass text-gray-400 px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap';
             });
             btn.className = 'active-tab-filter glass px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap';
         }
 
-        // Función para cambiar entre Pestañas Principales (Torneo/Equipos)
         function showPage(pageName, btn) {
-            // Ocultar todas las secciones
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-            // Mostrar la seleccionada
             document.getElementById('section-' + pageName).classList.add('active');
-            
-            // Actualizar color de la navegación inferior
             document.querySelectorAll('nav .nav-item').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         }
 
-        // Carga inicial: Mostrar las jornadas por defecto
         renderMatches('jornadas', document.querySelector('#section-partidos button'));
     </script>
 </body>
