@@ -107,7 +107,7 @@
         <section id="section-equipos" class="page-section">
             <div class="flex justify-between items-end mb-6">
                 <h2 class="font-sport text-xs tracking-widest text-gold-light">Plantillas Oficiales</h2>
-                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Season 2024</span>
+                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Season 2026</span>
             </div>
             
             <div class="space-y-4">
@@ -212,11 +212,11 @@
                 { id: 6, label: 'Jornada 6', t1: 'Broca Juniors', f1: 'brocajuniors.png', t2: 'Aston Pila', f2: 'astonpila.png', time: '' }
             ],
             semis: [
-                { id: 7, label: 'Semi 1', t1: '1º Clasif', f1: 'supercopaitae.png', t2: '4º Clasif', f2: 'supercopaitae.png', time: '' },
-                { id: 8, label: 'Semi 2', t1: '2º Clasif', f1: 'supercopaitae.png', t2: '3º Clasif', f2: 'supercopaitae.png', time: '' }
+                { id: 7, label: 'Semifinal 1', t1: '1º Clasificado', f1: 'supercopaitae.png', t2: '4º Clasif', f2: 'supercopaitae.png', time: '' },
+                { id: 8, label: 'Semifinal 2', t1: '2º Clasificado', f1: 'supercopaitae.png', t2: '3º Clasif', f2: 'supercopaitae.png', time: '' }
             ],
             final: [
-                { id: 9, label: 'Bronce', t1: 'Perdedor S1', f1: 'supercopaitae.png', t2: 'Perdedor S2', f2: 'supercopaitae.png', time: '' },
+                { id: 9, label: '3º y 4º', t1: 'Perdedor S1', f1: 'supercopaitae.png', t2: 'Perdedor S2', f2: 'supercopaitae.png', time: '' },
                 { id: 10, label: 'Final', t1: 'Ganador S1', f1: 'supercopaitae.png', t2: 'Ganador S2', f2: 'supercopaitae.png', time: '', isFinal: true }
             ]
         };
@@ -225,7 +225,7 @@
             const container = document.getElementById('match-list');
             container.innerHTML = matches[group].map(m => `
                 <div class="glass p-5 rounded-3xl relative overflow-hidden ${m.isFinal ? 'border border-gold shadow-[0_0_20px_rgba(212,175,55,0.3)]' : ''}">
-                    ${m.isFinal ? '<div class="absolute top-0 right-0 bg-gold text-black px-4 py-1.5 text-[8px] uppercase font-bold font-sport tracking-widest rounded-bl-xl shadow-lg">El Gran Partido</div>' : ''}
+                    ${m.isFinal ? '<div class="absolute top-0 right-0 bg-gold text-black px-4 py-1.5 text-[8px] uppercase font-bold font-sport tracking-widest rounded-bl-xl shadow-lg"></div>' : ''}
                     <div class="flex justify-between items-center gap-1">
                         <div class="flex-1 flex flex-col items-center gap-2">
                             <img src="${m.f1}" alt="${m.t1}" class="w-12 h-12 object-contain drop-shadow-md">
@@ -234,7 +234,7 @@
                         <div class="flex flex-col items-center px-4 w-28">
                             <span class="text-[9px] text-gold font-bold mb-2 tracking-widest font-sport">${m.label}</span>
                             <div class="bg-white/10 text-gold-light px-5 py-2 rounded-lg font-black italic tracking-widest shadow-xl border border-white/5 text-xs">VS</div>
-                            <span class="text-[10px] mt-2 font-bold opacity-70">${m.time} h</span>
+                            <span class="text-[10px] mt-2 font-bold opacity-70">${m.time} </span>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-2">
                             <img src="${m.f2}" alt="${m.t2}" class="w-12 h-12 object-contain drop-shadow-md">
