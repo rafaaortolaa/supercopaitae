@@ -75,10 +75,19 @@
         .player-item:last-child { border-bottom: none; }
         .captain { color: var(--gold); font-weight: 700; border-left: 3px solid var(--gold); padding-left: 10px; background: rgba(212, 175, 55, 0.05); }
         
-        /* Estilo para Fichajes */
         .transfer-card {
             background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(0,0,0,0.5));
             border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .news-badge {
+            background: var(--gold);
+            color: black;
+            font-[9px];
+            font-weight: 900;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -96,43 +105,65 @@
         
         <section id="section-noticias" class="page-section active">
             <div class="flex justify-between items-end mb-6">
-                <h2 class="font-sport text-xs tracking-widest text-gold-light">Última Hora</h2>
+                <h2 class="font-sport text-xs tracking-widest text-gold-light">Journal | Noticias</h2>
                 <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Season 2026</span>
             </div>
 
             <div class="mb-8">
-                <h3 class="font-sport text-[10px] text-gold mb-4 tracking-tighter italic">Mercado de Fichajes</h3>
+                <h3 class="font-sport text-[10px] text-gold mb-4 tracking-tighter italic">Estatus de Agentes Libres</h3>
                 <div class="grid grid-cols-3 gap-3">
-                    <div class="transfer-card p-3 rounded-xl text-center">
+                    <div class="transfer-card p-3 rounded-xl text-center opacity-50 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/60 z-10">
+                            <span class="text-[8px] font-black text-gold rotate-12 border border-gold px-1">FICHADO</span>
+                        </div>
                         <div class="w-10 h-10 bg-white/10 rounded-full mx-auto mb-2 flex items-center justify-center border border-gold/50">
-                            <i class="fas fa-user text-gold text-xs"></i>
+                            <i class="fas fa-check text-gold text-xs"></i>
                         </div>
                         <p class="text-[10px] font-bold">HASSAN</p>
-                        <p class="text-[8px] text-gold-light mt-1 uppercase">Disponible</p>
                     </div>
                     <div class="transfer-card p-3 rounded-xl text-center">
                         <div class="w-10 h-10 bg-white/10 rounded-full mx-auto mb-2 flex items-center justify-center border border-gold/50">
                             <i class="fas fa-user text-gold text-xs"></i>
                         </div>
                         <p class="text-[10px] font-bold">GERARD</p>
-                        <p class="text-[8px] text-gold-light mt-1 uppercase">Disponible</p>
+                        <p class="text-[8px] text-gold-light mt-1 uppercase italic">Libre</p>
                     </div>
                     <div class="transfer-card p-3 rounded-xl text-center">
                         <div class="w-10 h-10 bg-white/10 rounded-full mx-auto mb-2 flex items-center justify-center border border-gold/50">
                             <i class="fas fa-user text-gold text-xs"></i>
                         </div>
                         <p class="text-[10px] font-bold">RAFI</p>
-                        <p class="text-[8px] text-gold-light mt-1 uppercase">Disponible</p>
+                        <p class="text-[8px] text-gold-light mt-1 uppercase italic">Libre</p>
                     </div>
                 </div>
-                <p class="text-[9px] text-gray-500 mt-3 italic">* Los equipos deben completar el fichaje de estos 3 jugadores.</p>
             </div>
 
-            <div class="space-y-4">
-                <div class="glass p-4 rounded-2xl border-l-4 border-gold">
-                    <p class="text-[10px] text-gold font-bold mb-1 uppercase tracking-tighter">Comunicado Oficial</p>
-                    <h3 class="font-bold text-sm mb-2">¡Todo listo para la Supercopa!</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">Los capitanes han confirmado sus plantillas. Se espera un torneo de máximo nivel.</p>
+            <div class="space-y-6">
+                <div class="glass p-5 rounded-2xl border-l-4 border-gold shadow-xl">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="news-badge">BOMBAZO</span>
+                        <span class="text-[9px] text-gray-500">HACE 1 MIN</span>
+                    </div>
+                    <h3 class="font-bold text-sm mb-2 text-white italic">¡HASSAN YA TIENE NUEVA CASA!</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed italic">Se acabó el culebrón. El cotizadísimo agente libre ha estampado su firma y ya ha encontrado club para esta Supercopa. ¡El mercado arde!</p>
+                </div>
+
+                <div class="glass p-5 rounded-2xl border-l-4 border-gold">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="news-badge">EXCLUSIVA</span>
+                        <span class="text-[9px] text-gray-500">HACE 5 MIN</span>
+                    </div>
+                    <h3 class="font-bold text-sm mb-2">IVÁN SANZ AL BANQUILLO DE PICK AND PLACE</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed italic">Polémica en los despachos: **Iván Sanz** asume las riendas de Pick and Place. Los rumores en el paddock sugieren que su nombramiento **"se ha elegido a dedo"**, despertando el recelo de los rivales.</p>
+                </div>
+
+                <div class="glass p-5 rounded-2xl border-l-4 border-gray-600 opacity-80">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">Comunicado</span>
+                        <span class="text-[9px] text-gray-500">AYER</span>
+                    </div>
+                    <h3 class="font-bold text-sm mb-2 uppercase tracking-tighter">Arranque de la competición</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Los capitanes confirman sus listas. La Supercopa de ITAE está a punto de comenzar.</p>
                 </div>
             </div>
         </section>
@@ -214,7 +245,10 @@
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-4">
                             <img src="pickandplace.png" alt="Pick and Place" class="w-12 h-12 object-contain drop-shadow-md">
-                            <h3 class="font-sport text-xs tracking-wider">Pick and Place</h3>
+                            <div>
+                                <h3 class="font-sport text-xs tracking-wider">Pick and Place</h3>
+                                <p class="text-[8px] text-gold mt-1">DT: IVÁN SANZ</p>
+                            </div>
                         </div>
                         <i class="fas fa-chevron-down text-gold text-xs transition-transform"></i>
                     </div>
@@ -233,38 +267,38 @@
 
         <section id="section-staff" class="page-section">
             <div class="flex justify-between items-end mb-6">
-                <h2 class="font-sport text-xs tracking-widest text-gold-light">Equipo Técnico</h2>
-                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Organización</span>
+                <h2 class="font-sport text-xs tracking-widest text-gold-light">Technical Team</h2>
+                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Official</span>
             </div>
             
             <div class="space-y-4">
-                <div class="glass p-5 rounded-2xl flex items-center gap-5">
-                    <div class="w-12 h-12 gold-border border-2 rounded-full flex items-center justify-center text-gold">
+                <div class="glass p-5 rounded-2xl flex items-center gap-5 border-l-2 border-gold">
+                    <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold shadow-[0_0_15px_rgba(212,175,55,0.2)]">
                         <i class="fas fa-gavel text-xl"></i>
                     </div>
                     <div>
-                        <p class="text-[10px] text-gold font-bold uppercase font-sport">Árbitro Oficial</p>
-                        <p class="font-bold">Por confirmar</p>
+                        <p class="text-[10px] text-gold font-bold uppercase font-sport tracking-widest">Árbitro Principal</p>
+                        <p class="font-bold text-lg tracking-tight">YERAY</p>
                     </div>
                 </div>
                 
-                <div class="glass p-5 rounded-2xl flex items-center gap-5">
-                    <div class="w-12 h-12 gold-border border-2 rounded-full flex items-center justify-center text-gold">
-                        <i class="fas fa-microphone text-xl"></i>
+                <div class="glass p-5 rounded-2xl flex items-center gap-5 border-l-2 border-gold">
+                    <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                        <i class="fas fa-bullhorn text-xl"></i>
                     </div>
                     <div>
-                        <p class="text-[10px] text-gold font-bold uppercase font-sport">Speaker</p>
-                        <p class="font-bold">Por confirmar</p>
+                        <p class="text-[10px] text-gold font-bold uppercase font-sport tracking-widest">Speaker & Host</p>
+                        <p class="font-bold text-lg tracking-tight">KAROL DI</p>
                     </div>
                 </div>
 
-                <div class="glass p-5 rounded-2xl flex items-center gap-5">
-                    <div class="w-12 h-12 gold-border border-2 rounded-full flex items-center justify-center text-gold">
-                        <i class="fas fa-clipboard-list text-xl"></i>
+                <div class="glass p-5 rounded-2xl flex items-center gap-5 border-l-2 border-white/20">
+                    <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-white/50">
+                        <i class="fas fa-clipboard-user text-xl"></i>
                     </div>
                     <div>
-                        <p class="text-[10px] text-gold font-bold uppercase font-sport">Entrenadores</p>
-                        <p class="text-xs text-gray-400">Cuerpo técnico del torneo</p>
+                        <p class="text-[10px] text-gray-500 font-bold uppercase font-sport tracking-widest">Entrenador P&P</p>
+                        <p class="font-bold text-lg tracking-tight">IVÁN SANZ</p>
                     </div>
                 </div>
             </div>
