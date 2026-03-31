@@ -75,10 +75,11 @@
         .player-item:last-child { border-bottom: none; }
         .captain { color: var(--gold); font-weight: 700; border-left: 3px solid var(--gold); padding-left: 10px; background: rgba(212, 175, 55, 0.05); }
         
-        /* Estilos Tabla */
-        table { width: 100%; border-collapse: collapse; font-size: 12px; }
-        th { text-align: left; color: var(--gold); padding: 10px 5px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
-        td { padding: 12px 5px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        /* Estilo para Fichajes */
+        .transfer-card {
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(0,0,0,0.5));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
     </style>
 </head>
 <body class="pb-28">
@@ -98,16 +99,40 @@
                 <h2 class="font-sport text-xs tracking-widest text-gold-light">Última Hora</h2>
                 <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Season 2026</span>
             </div>
+
+            <div class="mb-8">
+                <h3 class="font-sport text-[10px] text-gold mb-4 tracking-tighter italic">Mercado de Fichajes</h3>
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="transfer-card p-3 rounded-xl text-center">
+                        <div class="w-10 h-10 bg-white/10 rounded-full mx-auto mb-2 flex items-center justify-center border border-gold/50">
+                            <i class="fas fa-user text-gold text-xs"></i>
+                        </div>
+                        <p class="text-[10px] font-bold">HASSAN</p>
+                        <p class="text-[8px] text-gold-light mt-1 uppercase">Disponible</p>
+                    </div>
+                    <div class="transfer-card p-3 rounded-xl text-center">
+                        <div class="w-10 h-10 bg-white/10 rounded-full mx-auto mb-2 flex items-center justify-center border border-gold/50">
+                            <i class="fas fa-user text-gold text-xs"></i>
+                        </div>
+                        <p class="text-[10px] font-bold">GERARD</p>
+                        <p class="text-[8px] text-gold-light mt-1 uppercase">Disponible</p>
+                    </div>
+                    <div class="transfer-card p-3 rounded-xl text-center">
+                        <div class="w-10 h-10 bg-white/10 rounded-full mx-auto mb-2 flex items-center justify-center border border-gold/50">
+                            <i class="fas fa-user text-gold text-xs"></i>
+                        </div>
+                        <p class="text-[10px] font-bold">RAFI</p>
+                        <p class="text-[8px] text-gold-light mt-1 uppercase">Disponible</p>
+                    </div>
+                </div>
+                <p class="text-[9px] text-gray-500 mt-3 italic">* Los equipos deben completar el fichaje de estos 3 jugadores.</p>
+            </div>
+
             <div class="space-y-4">
                 <div class="glass p-4 rounded-2xl border-l-4 border-gold">
                     <p class="text-[10px] text-gold font-bold mb-1 uppercase tracking-tighter">Comunicado Oficial</p>
                     <h3 class="font-bold text-sm mb-2">¡Todo listo para la Supercopa!</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">Los capitanes han confirmado sus plantillas. Se espera un torneo de máximo nivel técnico y competitividad.</p>
-                </div>
-                <div class="glass p-4 rounded-2xl">
-                    <p class="text-[10px] text-blue-400 font-bold mb-1 uppercase tracking-tighter">Reglamento</p>
-                    <h3 class="font-bold text-sm mb-2">Recordatorio de Normas</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">Se ruega puntualidad a todos los equipos para cumplir con el calendario de partidos sin retrasos.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Los capitanes han confirmado sus plantillas. Se espera un torneo de máximo nivel.</p>
                 </div>
             </div>
         </section>
@@ -206,48 +231,42 @@
             </div>
         </section>
 
-        <section id="section-tabla" class="page-section">
+        <section id="section-staff" class="page-section">
             <div class="flex justify-between items-end mb-6">
-                <h2 class="font-sport text-xs tracking-widest text-gold-light">Clasificación</h2>
-                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Season 2026</span>
+                <h2 class="font-sport text-xs tracking-widest text-gold-light">Equipo Técnico</h2>
+                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Organización</span>
             </div>
-            <div class="glass p-4 rounded-3xl">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>POS</th>
-                            <th>EQUIPO</th>
-                            <th class="text-center">PJ</th>
-                            <th class="text-center">PTS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-bold text-gold">1</td>
-                            <td class="font-bold text-[11px]">Las Gacelas</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center font-bold">0</td>
-                        </tr>
-                        <tr>
-                            <td class="font-bold">2</td>
-                            <td class="font-bold text-[11px]">Broca Juniors</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center font-bold">0</td>
-                        </tr>
-                        <tr>
-                            <td class="font-bold">3</td>
-                            <td class="font-bold text-[11px]">Aston Pila</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center font-bold">0</td>
-                        </tr>
-                        <tr>
-                            <td class="font-bold">4</td>
-                            <td class="font-bold text-[11px]">Pick and Place</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center font-bold">0</td>
-                        </tr>
-                    </tbody>
-                </table>
+            
+            <div class="space-y-4">
+                <div class="glass p-5 rounded-2xl flex items-center gap-5">
+                    <div class="w-12 h-12 gold-border border-2 rounded-full flex items-center justify-center text-gold">
+                        <i class="fas fa-gavel text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gold font-bold uppercase font-sport">Árbitro Oficial</p>
+                        <p class="font-bold">Por confirmar</p>
+                    </div>
+                </div>
+                
+                <div class="glass p-5 rounded-2xl flex items-center gap-5">
+                    <div class="w-12 h-12 gold-border border-2 rounded-full flex items-center justify-center text-gold">
+                        <i class="fas fa-microphone text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gold font-bold uppercase font-sport">Speaker</p>
+                        <p class="font-bold">Por confirmar</p>
+                    </div>
+                </div>
+
+                <div class="glass p-5 rounded-2xl flex items-center gap-5">
+                    <div class="w-12 h-12 gold-border border-2 rounded-full flex items-center justify-center text-gold">
+                        <i class="fas fa-clipboard-list text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gold font-bold uppercase font-sport">Entrenadores</p>
+                        <p class="text-xs text-gray-400">Cuerpo técnico del torneo</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -265,9 +284,9 @@
             <i class="fas fa-users-cog text-lg"></i>
             <span class="text-[8px] uppercase font-bold font-sport">Equipos</span>
         </button>
-        <button onclick="showPage('tabla', this)" class="nav-item flex flex-col items-center gap-1">
-            <i class="fas fa-list-ol text-lg"></i>
-            <span class="text-[8px] uppercase font-bold font-sport">Tabla</span>
+        <button onclick="showPage('staff', this)" class="nav-item flex flex-col items-center gap-1">
+            <i class="fas fa-user-tie text-lg"></i>
+            <span class="text-[8px] uppercase font-bold font-sport">Técnico</span>
         </button>
     </nav>
 
@@ -282,8 +301,8 @@
                 { id: 6, label: 'Jornada 6', t1: 'Broca Juniors', f1: 'brocajuniors.png', t2: 'Aston Pila', f2: 'astonpila.png', time: '' }
             ],
             semis: [
-                { id: 7, label: 'Semi 1', t1: '1º Clasif.', f1: 'supercopaitae.png', t2: '4º Clasif.', f2: 'supercopaitae.png', time: '' },
-                { id: 8, label: 'Semi 2', t1: '2º Clasif.', f1: 'supercopaitae.png', t2: '3º Clasif.', f2: 'supercopaitae.png', time: '' }
+                { id: 7, label: 'Semifinal 1', t1: '1º Clasif.', f1: 'supercopaitae.png', t2: '4º Clasif.', f2: 'supercopaitae.png', time: '' },
+                { id: 8, label: 'Semifinal 2', t1: '2º Clasif.', f1: 'supercopaitae.png', t2: '3º Clasif.', f2: 'supercopaitae.png', time: '' }
             ],
             final: [
                 { id: 9, label: '3º y 4º', t1: 'Perdedor S1', f1: 'supercopaitae.png', t2: 'Perdedor S2', f2: 'supercopaitae.png', time: '' },
