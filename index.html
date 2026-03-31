@@ -6,9 +6,7 @@
     <title>ITAE Sports | Supercopa</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
@@ -67,7 +65,6 @@
         .player-drawer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
         .team-card.open .player-drawer { max-height: 600px; padding-top: 1.5rem; }
 
-        /* Estilo para la lista vertical de jugadores */
         .player-item {
             padding: 8px 12px;
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -77,6 +74,11 @@
         }
         .player-item:last-child { border-bottom: none; }
         .captain { color: var(--gold); font-weight: 700; border-left: 3px solid var(--gold); padding-left: 10px; background: rgba(212, 175, 55, 0.05); }
+        
+        /* Estilos Tabla */
+        table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        th { text-align: left; color: var(--gold); padding: 10px 5px; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        td { padding: 12px 5px; border-bottom: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body class="pb-28">
@@ -91,7 +93,26 @@
 
     <main class="max-w-md mx-auto px-4 mt-10 relative z-10">
         
-        <section id="section-partidos" class="page-section active">
+        <section id="section-noticias" class="page-section active">
+            <div class="flex justify-between items-end mb-6">
+                <h2 class="font-sport text-xs tracking-widest text-gold-light">Última Hora</h2>
+                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Season 2026</span>
+            </div>
+            <div class="space-y-4">
+                <div class="glass p-4 rounded-2xl border-l-4 border-gold">
+                    <p class="text-[10px] text-gold font-bold mb-1 uppercase tracking-tighter">Comunicado Oficial</p>
+                    <h3 class="font-bold text-sm mb-2">¡Todo listo para la Supercopa!</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Los capitanes han confirmado sus plantillas. Se espera un torneo de máximo nivel técnico y competitividad.</p>
+                </div>
+                <div class="glass p-4 rounded-2xl">
+                    <p class="text-[10px] text-blue-400 font-bold mb-1 uppercase tracking-tighter">Reglamento</p>
+                    <h3 class="font-bold text-sm mb-2">Recordatorio de Normas</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Se ruega puntualidad a todos los equipos para cumplir con el calendario de partidos sin retrasos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-partidos" class="page-section">
             <div class="flex justify-between items-end mb-6">
                 <h2 class="font-sport text-xs tracking-widest text-gold-light">Horarios</h2>
                 <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">SEASON 2026</span>
@@ -109,7 +130,6 @@
                 <h2 class="font-sport text-xs tracking-widest text-gold-light">Plantillas</h2>
                 <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Season 2026</span>
             </div>
-            
             <div class="space-y-4">
                 <div class="team-card glass rounded-2xl p-5" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
@@ -129,7 +149,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="team-card glass rounded-2xl p-5" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-4">
@@ -148,7 +167,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="team-card glass rounded-2xl p-5" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-4">
@@ -167,7 +185,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="team-card glass rounded-2xl p-5" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-4">
@@ -188,16 +205,69 @@
                 </div>
             </div>
         </section>
+
+        <section id="section-tabla" class="page-section">
+            <div class="flex justify-between items-end mb-6">
+                <h2 class="font-sport text-xs tracking-widest text-gold-light">Clasificación</h2>
+                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Season 2026</span>
+            </div>
+            <div class="glass p-4 rounded-3xl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>POS</th>
+                            <th>EQUIPO</th>
+                            <th class="text-center">PJ</th>
+                            <th class="text-center">PTS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold text-gold">1</td>
+                            <td class="font-bold text-[11px]">Las Gacelas</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center font-bold">0</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">2</td>
+                            <td class="font-bold text-[11px]">Broca Juniors</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center font-bold">0</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">3</td>
+                            <td class="font-bold text-[11px]">Aston Pila</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center font-bold">0</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">4</td>
+                            <td class="font-bold text-[11px]">Pick and Place</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center font-bold">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
 
-    <nav class="bottom-nav fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm h-18 glass rounded-full flex justify-around items-center px-8 z-50 border border-gold/10">
-        <button onclick="showPage('partidos', this)" id="nav-partidos" class="nav-item active flex flex-col items-center gap-1.5 transition-all">
-            <i class="fas fa-trophy text-xl"></i>
-            <span class="text-[9px] uppercase mt-1 font-bold font-sport tracking-wider">Torneo</span>
+    <nav class="bottom-nav fixed bottom-6 left-1/2 -translate-x-1/2 w-[95%] h-18 glass rounded-full flex justify-around items-center px-4 z-50 border border-gold/10">
+        <button onclick="showPage('noticias', this)" class="nav-item active flex flex-col items-center gap-1">
+            <i class="fas fa-newspaper text-lg"></i>
+            <span class="text-[8px] uppercase font-bold font-sport">Noticias</span>
         </button>
-        <button onclick="showPage('equipos', this)" id="nav-equipos" class="nav-item flex flex-col items-center gap-1.5 transition-all">
-            <i class="fas fa-users-cog text-xl"></i>
-            <span class="text-[9px] uppercase mt-1 font-bold font-sport tracking-wider">Equipos</span>
+        <button onclick="showPage('partidos', this)" class="nav-item flex flex-col items-center gap-1">
+            <i class="fas fa-calendar-alt text-lg"></i>
+            <span class="text-[8px] uppercase font-bold font-sport">Torneo</span>
+        </button>
+        <button onclick="showPage('equipos', this)" class="nav-item flex flex-col items-center gap-1">
+            <i class="fas fa-users-cog text-lg"></i>
+            <span class="text-[8px] uppercase font-bold font-sport">Equipos</span>
+        </button>
+        <button onclick="showPage('tabla', this)" class="nav-item flex flex-col items-center gap-1">
+            <i class="fas fa-list-ol text-lg"></i>
+            <span class="text-[8px] uppercase font-bold font-sport">Tabla</span>
         </button>
     </nav>
 
@@ -212,8 +282,8 @@
                 { id: 6, label: 'Jornada 6', t1: 'Broca Juniors', f1: 'brocajuniors.png', t2: 'Aston Pila', f2: 'astonpila.png', time: '' }
             ],
             semis: [
-                { id: 7, label: 'Semifinal 1', t1: '1º Clasificado', f1: 'supercopaitae.png', t2: '4º Clasificado', f2: 'supercopaitae.png', time: '' },
-                { id: 8, label: 'Semifinal 2', t1: '2º Clasificado', f1: 'supercopaitae.png', t2: '3º Clasificado', f2: 'supercopaitae.png', time: '' }
+                { id: 7, label: 'Semi 1', t1: '1º Clasif.', f1: 'supercopaitae.png', t2: '4º Clasif.', f2: 'supercopaitae.png', time: '' },
+                { id: 8, label: 'Semi 2', t1: '2º Clasif.', f1: 'supercopaitae.png', t2: '3º Clasif.', f2: 'supercopaitae.png', time: '' }
             ],
             final: [
                 { id: 9, label: '3º y 4º', t1: 'Perdedor S1', f1: 'supercopaitae.png', t2: 'Perdedor S2', f2: 'supercopaitae.png', time: '' },
@@ -225,20 +295,18 @@
             const container = document.getElementById('match-list');
             container.innerHTML = matches[group].map(m => `
                 <div class="glass p-5 rounded-3xl relative overflow-hidden ${m.isFinal ? 'border border-gold shadow-[0_0_20px_rgba(212,175,55,0.3)]' : ''}">
-                    ${m.isFinal ? '<div class="absolute top-0 right-0 bg-gold text-black px-4 py-1.5 text-[8px] uppercase font-bold font-sport tracking-widest rounded-bl-xl shadow-lg"></div>' : ''}
                     <div class="flex justify-between items-center gap-1">
                         <div class="flex-1 flex flex-col items-center gap-2">
                             <img src="${m.f1}" alt="${m.t1}" class="w-12 h-12 object-contain drop-shadow-md">
-                            <p class="font-bold text-sm tracking-tighter uppercase text-center">${m.t1}</p>
+                            <p class="font-bold text-[10px] tracking-tighter uppercase text-center">${m.t1}</p>
                         </div>
                         <div class="flex flex-col items-center px-4 w-28">
                             <span class="text-[9px] text-gold font-bold mb-2 tracking-widest font-sport">${m.label}</span>
                             <div class="bg-white/10 text-gold-light px-5 py-2 rounded-lg font-black italic tracking-widest shadow-xl border border-white/5 text-xs">VS</div>
-                            <span class="text-[10px] mt-2 font-bold opacity-70">${m.time} </span>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-2">
                             <img src="${m.f2}" alt="${m.t2}" class="w-12 h-12 object-contain drop-shadow-md">
-                            <p class="font-bold text-sm tracking-tighter uppercase text-center">${m.t2}</p>
+                            <p class="font-bold text-[10px] tracking-tighter uppercase text-center">${m.t2}</p>
                         </div>
                     </div>
                 </div>
