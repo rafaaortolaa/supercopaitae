@@ -23,7 +23,7 @@
             background-image: radial-gradient(circle at 50% -20%, #172a4f 0%, #03040a 80%);
             -webkit-tap-highlight-color: transparent;
             overflow-x: hidden;
-            font-size: 16px; /* Subida la base de fuente */
+            font-size: 16px;
         }
 
         .font-sport { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
@@ -91,6 +91,15 @@
             border-radius: 5px;
             text-transform: uppercase;
         }
+        
+        .news-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
     </style>
 </head>
 <body class="pb-32">
@@ -123,12 +132,14 @@
                         </div>
                         <p class="text-xs font-black uppercase">Hassan</p>
                     </div>
-                    <div class="transfer-card p-4 rounded-2xl text-center">
+                    <div class="transfer-card p-4 rounded-2xl text-center opacity-60 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/70 z-10">
+                            <span class="text-[10px] font-black text-gold rotate-12 border-2 border-gold px-2">FICHADO</span>
+                        </div>
                         <div class="w-12 h-12 bg-white/10 rounded-full mx-auto mb-3 flex items-center justify-center border border-gold/50 text-xl text-gold">
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-check"></i>
                         </div>
                         <p class="text-xs font-black uppercase">Gerard</p>
-                        <p class="text-[10px] text-gold-light mt-1 font-bold italic uppercase tracking-tighter">Libre</p>
                     </div>
                     <div class="transfer-card p-4 rounded-2xl text-center opacity-60 relative overflow-hidden">
                         <div class="absolute inset-0 flex items-center justify-center bg-black/70 z-10">
@@ -145,20 +156,22 @@
             <div class="space-y-8">
                 <div class="glass p-6 rounded-[2.5rem] border-l-[6px] border-gold shadow-2xl">
                     <div class="flex justify-between items-start mb-4">
-                        <span class="news-badge">ÚLTIMA HORA</span>
-                        <span class="text-[10px] text-gray-500 font-bold uppercase">01 Abr | 11:10</span>
+                        <span class="news-badge">OFICIAL</span>
+                        <span class="text-[10px] text-gray-500 font-bold uppercase">02 Abr | 13:05</span>
                     </div>
-                    <h3 class="font-bold text-lg mb-3 text-white italic leading-tight">¡RAFI ABANDONA LA AGENCIA LIBRE!</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed italic">Otro movimiento sísmico en el mercado. Rafi ya tiene equipo confirmado. El destino se mantiene bajo llave. ¿Qué están tramando?</p>
+                    <img src="hassan.png" alt="Fichaje Hassan" class="news-img" onerror="this.style.display='none'">
+                    <h3 class="font-bold text-lg mb-3 text-white italic leading-tight">HASSAN SE UNE A LAS FILAS DE ASTON PILA</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed italic">Se desvela el misterio. El Aston Pila refuerza su ataque con la incorporación estrella de Hassan. ¡La delantera ya asusta!</p>
                 </div>
 
-                <div class="glass p-6 rounded-[2.5rem] border-l-[6px] border-gold">
+                <div class="glass p-6 rounded-[2.5rem] border-l-[6px] border-gold shadow-2xl">
                     <div class="flex justify-between items-start mb-4">
-                        <span class="news-badge">BOMBAZO</span>
-                        <span class="text-[10px] text-gray-500 font-bold uppercase">31 Mar | 08:03</span>
+                        <span class="news-badge">OFICIAL</span>
+                        <span class="text-[10px] text-gray-500 font-bold uppercase">02 Abr | 12:50</span>
                     </div>
-                    <h3 class="font-bold text-lg mb-3 text-white italic leading-tight">¡HASSAN YA TIENE NUEVA CASA!</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed italic">Se acabó el culebrón. El cotizadísimo agente libre ha encontrado club para esta Supercopa. La identidad del equipo sigue siendo un misterio.</p>
+                    <img src="rafi.png" alt="Fichaje Rafi" class="news-img" onerror="this.style.display='none'">
+                    <h3 class="font-bold text-lg mb-3 text-white italic leading-tight">RAFI FIRMA CON LAS GACELAS</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed italic">Las Gacelas mueven ficha y aseguran la contratación de Rafi. El equipo busca velocidad y potencia para dominar la tabla.</p>
                 </div>
 
                 <div class="glass p-6 rounded-[2.5rem] border-l-[6px] border-gold">
@@ -202,7 +215,11 @@
                     <div class="player-drawer">
                         <div class="glass rounded-2xl overflow-hidden mt-4">
                             <div class="player-item captain"><span>Gacela</span><span class="text-[11px] font-sport">CAPITÁN</span></div>
-                            <div class="player-item"><span>Isaac</span></div><div class="player-item"><span>Valentino</span></div><div class="player-item"><span>Hiram</span></div><div class="player-item"><span>Pepe</span></div>
+                            <div class="player-item"><span>Isaac</span></div>
+                            <div class="player-item"><span>Valentino</span></div>
+                            <div class="player-item"><span>Hiram</span></div>
+                            <div class="player-item"><span>Pepe</span></div>
+                            <div class="player-item text-gold font-bold"><span>Rafi</span><span class="text-[9px]">FICHAJE</span></div>
                         </div>
                     </div>
                 </div>
@@ -232,7 +249,11 @@
                     <div class="player-drawer">
                         <div class="glass rounded-2xl overflow-hidden mt-4">
                             <div class="player-item captain"><span>Santi</span><span class="text-[11px] font-sport">CAPITÁN</span></div>
-                            <div class="player-item"><span>Iván</span></div><div class="player-item"><span>Serhi</span></div><div class="player-item"><span>Moad</span></div><div class="player-item"><span>Jesús</span></div>
+                            <div class="player-item"><span>Iván</span></div>
+                            <div class="player-item"><span>Serhi</span></div>
+                            <div class="player-item"><span>Moad</span></div>
+                            <div class="player-item"><span>Jesús</span></div>
+                            <div class="player-item text-gold font-bold"><span>Hassan</span><span class="text-[9px]">FICHAJE</span></div>
                         </div>
                     </div>
                 </div>
@@ -250,7 +271,11 @@
                     <div class="player-drawer">
                         <div class="glass rounded-2xl overflow-hidden mt-4">
                             <div class="player-item captain"><span>María</span><span class="text-[11px] font-sport">CAPITÁN</span></div>
-                            <div class="player-item"><span>Pablo</span></div><div class="player-item"><span>Christopher</span></div><div class="player-item"><span>Ester</span></div><div class="player-item"><span>Juan</span></div>
+                            <div class="player-item"><span>Pablo</span></div>
+                            <div class="player-item"><span>Christopher</span></div>
+                            <div class="player-item"><span>Ester</span></div>
+                            <div class="player-item"><span>Juan</span></div>
+                            <div class="player-item text-gold font-bold"><span>Gerard</span><span class="text-[9px]">FICHAJE</span></div>
                         </div>
                     </div>
                 </div>
