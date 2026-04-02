@@ -23,7 +23,6 @@
             background-image: radial-gradient(circle at 50% -20%, #172a4f 0%, #03040a 80%);
             -webkit-tap-highlight-color: transparent;
             overflow-x: hidden;
-            font-size: 16px;
         }
 
         .font-sport { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
@@ -35,7 +34,6 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.6);
         }
 
-        .text-gold { color: var(--gold); }
         .active-tab-filter {
             background: var(--gold);
             color: black;
@@ -61,10 +59,8 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .team-card { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); }
-        .team-card.open { border-color: var(--gold); background: rgba(212, 175, 55, 0.08); }
-        .player-drawer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
         .team-card.open .player-drawer { max-height: 800px; padding-top: 2rem; }
+        .player-drawer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
 
         .player-item {
             padding: 12px 16px;
@@ -72,7 +68,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 15px;
         }
         .player-item:last-child { border-bottom: none; }
         .captain { color: var(--gold); font-weight: 800; border-left: 4px solid var(--gold); padding-left: 14px; background: rgba(212, 175, 55, 0.08); }
@@ -92,24 +87,30 @@
             text-transform: uppercase;
         }
         
+        /* AJUSTE PARA QUE SE VEAN LAS FOTOS ENTERAS */
+        .news-img-container {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border-radius: 1.5rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
         .news-img {
             width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 1.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            height: auto; /* Altura automática para no cortar */
+            max-height: 400px; /* Límite para que no sea infinita */
+            object-fit: contain; /* Mantiene la proporción sin recortar */
+            display: block;
         }
     </style>
 </head>
 <body class="pb-32">
 
     <header class="pt-10 px-6 flex flex-col items-center gap-8 relative z-10">
-        <img src="itaesports.png" alt="ITAE SPORTS" class="h-16 object-contain opacity-100 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-        <div class="relative group">
-            <div class="absolute -inset-3 bg-gold-light rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition"></div>
-            <img src="supercopaitae.png" alt="Supercopa de ITAE" class="relative h-56 object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]">
-        </div>
+        <img src="itaesports.png" alt="ITAE SPORTS" class="h-20 object-contain">
+        <img src="supercopaitae.png" alt="Supercopa de ITAE" class="h-64 object-contain drop-shadow-2xl">
     </header>
 
     <main class="max-w-lg mx-auto px-5 mt-12 relative z-10">
@@ -159,9 +160,11 @@
                         <span class="news-badge">OFICIAL</span>
                         <span class="text-[10px] text-gray-500 font-bold uppercase">02 Abr | 13:05</span>
                     </div>
-                    <img src="hassan.png" alt="Fichaje Hassan" class="news-img" onerror="this.style.display='none'">
-                    <h3 class="font-bold text-lg mb-3 text-white italic leading-tight">HASSAN SE UNE A LAS FILAS DE ASTON PILA</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed italic">Se desvela el misterio. El Aston Pila refuerza su ataque con la incorporación estrella de Hassan. ¡La delantera ya asusta!</p>
+                    <div class="news-img-container">
+                        <img src="hassan.png" alt="Fichaje Hassan" class="news-img" onerror="this.parentElement.style.display='none'">
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-white italic leading-tight uppercase">HASSAN SE UNE A LAS FILAS DE ASTON PILA</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed italic">El Aston Pila refuerza su ataque con la incorporación estrella de Hassan. ¡La delantera ya asusta!</p>
                 </div>
 
                 <div class="glass p-6 rounded-[2.5rem] border-l-[6px] border-gold shadow-2xl">
@@ -169,9 +172,11 @@
                         <span class="news-badge">OFICIAL</span>
                         <span class="text-[10px] text-gray-500 font-bold uppercase">02 Abr | 12:50</span>
                     </div>
-                    <img src="rafi.png" alt="Fichaje Rafi" class="news-img" onerror="this.style.display='none'">
-                    <h3 class="font-bold text-lg mb-3 text-white italic leading-tight">RAFI FIRMA CON LAS GACELAS</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed italic">Las Gacelas mueven ficha y aseguran la contratación de Rafi. El equipo busca velocidad y potencia para dominar la tabla.</p>
+                    <div class="news-img-container">
+                        <img src="rafi.png" alt="Fichaje Rafi" class="news-img" onerror="this.parentElement.style.display='none'">
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-white italic leading-tight uppercase">RAFI FIRMA CON LAS GACELAS</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed italic">Las Gacelas aseguran la contratación de Rafi. El equipo busca potencia para dominar la tabla.</p>
                 </div>
 
                 <div class="glass p-6 rounded-[2.5rem] border-l-[6px] border-gold">
@@ -180,7 +185,7 @@
                         <span class="text-[10px] text-gray-500 font-bold uppercase">31 Mar | 07:43</span>
                     </div>
                     <h3 class="font-bold text-lg mb-3 text-white italic leading-tight">IVÁN SANZ AL BANQUILLO DE P&P</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed italic">Iván Sanz asume las riendas de Pick and Place. Los rumores sugieren que su nombramiento "se ha elegido a dedo", despertando el recelo de los rivales.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed italic uppercase">El nombramiento "se ha elegido a dedo", despertando el recelo de los rivales.</p>
                 </div>
             </div>
         </section>
@@ -207,29 +212,26 @@
                 <div class="team-card glass rounded-[2rem] p-6" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-5">
-                            <img src="lasgacelas.png" alt="Las Gacelas" class="w-16 h-16 object-contain drop-shadow-lg">
+                            <img src="lasgacelas.png" alt="Las Gacelas" class="w-20 h-20 object-contain">
                             <h3 class="font-sport text-sm tracking-widest">Las Gacelas</h3>
                         </div>
-                        <i class="fas fa-chevron-down text-gold text-lg transition-transform"></i>
+                        <i class="fas fa-chevron-down text-gold text-lg"></i>
                     </div>
                     <div class="player-drawer">
                         <div class="glass rounded-2xl overflow-hidden mt-4">
                             <div class="player-item captain"><span>Gacela</span><span class="text-[11px] font-sport">CAPITÁN</span></div>
-                            <div class="player-item"><span>Isaac</span></div>
-                            <div class="player-item"><span>Valentino</span></div>
-                            <div class="player-item"><span>Hiram</span></div>
-                            <div class="player-item"><span>Pepe</span></div>
-                            <div class="player-item text-gold font-bold"><span>Rafi</span><span class="text-[9px]">FICHAJE</span></div>
+                            <div class="player-item"><span>Isaac</span></div><div class="player-item"><span>Valentino</span></div><div class="player-item"><span>Hiram</span></div><div class="player-item"><span>Pepe</span></div>
+                            <div class="player-item text-gold font-bold"><span>Rafi</span><span class="text-[9px] font-sport">Fichaje</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="team-card glass rounded-[2rem] p-6" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-5">
-                            <img src="brocajuniors.png" alt="Broca Juniors" class="w-16 h-16 object-contain drop-shadow-lg">
+                            <img src="brocajuniors.png" alt="Broca Juniors" class="w-20 h-20 object-contain">
                             <h3 class="font-sport text-sm tracking-widest">Broca Juniors</h3>
                         </div>
-                        <i class="fas fa-chevron-down text-gold text-lg transition-transform"></i>
+                        <i class="fas fa-chevron-down text-gold text-lg"></i>
                     </div>
                     <div class="player-drawer">
                         <div class="glass rounded-2xl overflow-hidden mt-4">
@@ -241,41 +243,35 @@
                 <div class="team-card glass rounded-[2rem] p-6" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-5">
-                            <img src="astonpila.png" alt="Aston Pila" class="w-16 h-16 object-contain drop-shadow-lg">
+                            <img src="astonpila.png" alt="Aston Pila" class="w-20 h-20 object-contain">
                             <h3 class="font-sport text-sm tracking-widest">Aston Pila</h3>
                         </div>
-                        <i class="fas fa-chevron-down text-gold text-lg transition-transform"></i>
+                        <i class="fas fa-chevron-down text-gold text-lg"></i>
                     </div>
                     <div class="player-drawer">
                         <div class="glass rounded-2xl overflow-hidden mt-4">
                             <div class="player-item captain"><span>Santi</span><span class="text-[11px] font-sport">CAPITÁN</span></div>
-                            <div class="player-item"><span>Iván</span></div>
-                            <div class="player-item"><span>Serhi</span></div>
-                            <div class="player-item"><span>Moad</span></div>
-                            <div class="player-item"><span>Jesús</span></div>
-                            <div class="player-item text-gold font-bold"><span>Hassan</span><span class="text-[9px]">FICHAJE</span></div>
+                            <div class="player-item"><span>Iván</span></div><div class="player-item"><span>Serhi</span></div><div class="player-item"><span>Moad</span></div><div class="player-item"><span>Jesús</span></div>
+                            <div class="player-item text-gold font-bold"><span>Hassan</span><span class="text-[9px] font-sport">Fichaje</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="team-card glass rounded-[2rem] p-6" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-5">
-                            <img src="pickandplace.png" alt="Pick and Place" class="w-16 h-16 object-contain drop-shadow-lg">
+                            <img src="pickandplace.png" alt="Pick and Place" class="w-20 h-20 object-contain">
                             <div>
                                 <h3 class="font-sport text-sm tracking-widest">Pick & Place</h3>
                                 <p class="text-[10px] text-gold mt-1 font-extrabold uppercase">DT: Iván Sanz</p>
                             </div>
                         </div>
-                        <i class="fas fa-chevron-down text-gold text-lg transition-transform"></i>
+                        <i class="fas fa-chevron-down text-gold text-lg"></i>
                     </div>
                     <div class="player-drawer">
                         <div class="glass rounded-2xl overflow-hidden mt-4">
                             <div class="player-item captain"><span>María</span><span class="text-[11px] font-sport">CAPITÁN</span></div>
-                            <div class="player-item"><span>Pablo</span></div>
-                            <div class="player-item"><span>Christopher</span></div>
-                            <div class="player-item"><span>Ester</span></div>
-                            <div class="player-item"><span>Juan</span></div>
-                            <div class="player-item text-gold font-bold"><span>Gerard</span><span class="text-[9px]">FICHAJE</span></div>
+                            <div class="player-item"><span>Pablo</span></div><div class="player-item"><span>Christopher</span></div><div class="player-item"><span>Ester</span></div><div class="player-item"><span>Juan</span></div>
+                            <div class="player-item text-gold font-bold"><span>Gerard</span><span class="text-[9px] font-sport">Fichaje</span></div>
                         </div>
                     </div>
                 </div>
@@ -285,37 +281,33 @@
         <section id="section-staff" class="page-section">
             <div class="flex justify-between items-end mb-8">
                 <h2 class="font-sport text-sm tracking-[0.15em] text-gold-light">Technical Team</h2>
-                <span class="text-[10px] text-gray-500 font-bold uppercase tracking-[0.3em]">Official</span>
             </div>
-            
             <div class="space-y-6">
-                <div class="glass p-7 rounded-[2.5rem] flex items-center gap-6 border-l-[6px] border-gold shadow-2xl">
-                    <div class="w-16 h-16 bg-gold/15 rounded-full flex items-center justify-center text-gold shadow-[0_0_20px_rgba(212,175,55,0.25)] text-2xl">
+                <div class="glass p-7 rounded-[2.5rem] flex items-center gap-6 border-l-[6px] border-gold">
+                    <div class="w-20 h-20 bg-gold/15 rounded-full flex items-center justify-center text-gold text-3xl">
                         <i class="fas fa-gavel"></i>
                     </div>
                     <div>
-                        <p class="text-[11px] text-gold font-bold uppercase font-sport tracking-widest mb-1">Árbitro Principal</p>
-                        <p class="font-extrabold text-2xl tracking-tight uppercase">Yeray</p>
+                        <p class="text-[11px] text-gold font-bold uppercase font-sport tracking-widest mb-1">Árbitro</p>
+                        <p class="font-extrabold text-2xl uppercase">Yeray</p>
                     </div>
                 </div>
-                
-                <div class="glass p-7 rounded-[2.5rem] flex items-center gap-6 border-l-[6px] border-gold shadow-2xl">
-                    <div class="w-16 h-16 bg-gold/15 rounded-full flex items-center justify-center text-gold shadow-[0_0_20px_rgba(212,175,55,0.25)] text-2xl">
+                <div class="glass p-7 rounded-[2.5rem] flex items-center gap-6 border-l-[6px] border-gold">
+                    <div class="w-20 h-20 bg-gold/15 rounded-full flex items-center justify-center text-gold text-3xl">
                         <i class="fas fa-bullhorn"></i>
                     </div>
                     <div>
-                        <p class="text-[11px] text-gold font-bold uppercase font-sport tracking-widest mb-1">Speaker & Host</p>
-                        <p class="font-extrabold text-2xl tracking-tight uppercase">Karol Di</p>
+                        <p class="text-[11px] text-gold font-bold uppercase font-sport tracking-widest mb-1">Speaker</p>
+                        <p class="font-extrabold text-2xl uppercase">Karol Di</p>
                     </div>
                 </div>
-
-                <div class="glass p-7 rounded-[2.5rem] flex items-center gap-6 border-l-[6px] border-gold shadow-2xl">
-                    <div class="w-16 h-16 bg-black/50 rounded-full flex items-center justify-center p-2 border-2 border-gold/30">
-                        <img src="pickandplace.png" alt="P&P Logo" class="w-full h-full object-contain">
+                <div class="glass p-7 rounded-[2.5rem] flex items-center gap-6 border-l-[6px] border-gold">
+                    <div class="w-20 h-20 bg-black/50 rounded-full flex items-center justify-center p-3 border-2 border-gold/30">
+                        <img src="pickandplace.png" alt="P&P" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <p class="text-[11px] text-gold font-bold uppercase font-sport tracking-widest mb-1">Entrenador P&P</p>
-                        <p class="font-extrabold text-2xl tracking-tight uppercase italic">Iván Sanz</p>
+                        <p class="font-extrabold text-2xl uppercase italic">Iván Sanz</p>
                         <p class="text-[10px] text-gold/80 italic mt-1 font-bold">"Elegido a dedo"</p>
                     </div>
                 </div>
@@ -323,41 +315,41 @@
         </section>
     </main>
 
-    <nav class="bottom-nav fixed bottom-6 left-1/2 -translate-x-1/2 w-[94%] h-20 glass rounded-full flex justify-around items-center px-4 z-50 border border-gold/20 shadow-2xl">
-        <button onclick="showPage('noticias', this)" class="nav-item active flex flex-col items-center gap-1.5">
-            <i class="fas fa-newspaper text-2xl"></i>
-            <span class="text-[9px] uppercase font-extrabold font-sport tracking-tighter">Noticias</span>
+    <nav class="bottom-nav fixed bottom-6 left-1/2 -translate-x-1/2 w-[94%] h-24 glass rounded-full flex justify-around items-center px-4 z-50 border border-gold/20 shadow-2xl">
+        <button onclick="showPage('noticias', this)" class="nav-item active flex flex-col items-center gap-2">
+            <i class="fas fa-newspaper text-3xl"></i>
+            <span class="text-[10px] uppercase font-extrabold font-sport">Noticias</span>
         </button>
-        <button onclick="showPage('partidos', this)" class="nav-item flex flex-col items-center gap-1.5">
-            <i class="fas fa-calendar-alt text-2xl"></i>
-            <span class="text-[9px] uppercase font-extrabold font-sport tracking-tighter">Torneo</span>
+        <button onclick="showPage('partidos', this)" class="nav-item flex flex-col items-center gap-2">
+            <i class="fas fa-calendar-alt text-3xl"></i>
+            <span class="text-[10px] uppercase font-extrabold font-sport">Torneo</span>
         </button>
-        <button onclick="showPage('equipos', this)" class="nav-item flex flex-col items-center gap-1.5">
-            <i class="fas fa-users-cog text-2xl"></i>
-            <span class="text-[9px] uppercase font-extrabold font-sport tracking-tighter">Equipos</span>
+        <button onclick="showPage('equipos', this)" class="nav-item flex flex-col items-center gap-2">
+            <i class="fas fa-users-cog text-3xl"></i>
+            <span class="text-[10px] uppercase font-extrabold font-sport">Equipos</span>
         </button>
-        <button onclick="showPage('staff', this)" class="nav-item flex flex-col items-center gap-1.5">
-            <i class="fas fa-user-tie text-2xl"></i>
-            <span class="text-[9px] uppercase font-extrabold font-sport tracking-tighter">Técnico</span>
+        <button onclick="showPage('staff', this)" class="nav-item flex flex-col items-center gap-2">
+            <i class="fas fa-user-tie text-3xl"></i>
+            <span class="text-[10px] uppercase font-extrabold font-sport">Técnico</span>
         </button>
     </nav>
 
     <script>
         const matches = {
             jornadas: [
-                { id: 1, label: 'Jornada 1', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Broca Juniors', f2: 'brocajuniors.png' },
-                { id: 2, label: 'Jornada 2', t1: 'Aston Pila', f1: 'astonpila.png', t2: 'Pick & Place', f2: 'pickandplace.png' },
-                { id: 3, label: 'Jornada 3', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Aston Pila', f2: 'astonpila.png' },
-                { id: 4, label: 'Jornada 4', t1: 'Broca Juniors', f1: 'brocajuniors.png', t2: 'Pick & Place', f2: 'pickandplace.png' },
-                { id: 5, label: 'Jornada 5', t1: 'Pick & Place', f1: 'pickandplace.png', t2: 'Las Gacelas', f2: 'lasgacelas.png' },
-                { id: 6, label: 'Jornada 6', t1: 'Broca Juniors', f1: 'brocajuniors.png', t2: 'Aston Pila', f2: 'astonpila.png' }
+                { id: 1, label: 'J1', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Broca Jrs', f2: 'brocajuniors.png' },
+                { id: 2, label: 'J2', t1: 'Aston Pila', f1: 'astonpila.png', t2: 'Pick & Place', f2: 'pickandplace.png' },
+                { id: 3, label: 'J3', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Aston Pila', f2: 'astonpila.png' },
+                { id: 4, label: 'J4', t1: 'Broca Jrs', f1: 'brocajuniors.png', t2: 'Pick & Place', f2: 'pickandplace.png' },
+                { id: 5, label: 'J5', t1: 'Pick & Place', f1: 'pickandplace.png', t2: 'Las Gacelas', f2: 'lasgacelas.png' },
+                { id: 6, label: 'J6', t1: 'Broca Jrs', f1: 'brocajuniors.png', t2: 'Aston Pila', f2: 'astonpila.png' }
             ],
             semis: [
-                { id: 7, label: 'Semifinal 1', t1: '1º Clasif.', f1: 'supercopaitae.png', t2: '4º Clasif.', f2: 'supercopaitae.png' },
-                { id: 8, label: 'Semifinal 2', t1: '2º Clasif.', f1: 'supercopaitae.png', t2: '3º Clasif.', f2: 'supercopaitae.png' }
+                { id: 7, label: 'Semi 1', t1: '1º Clasif.', f1: 'supercopaitae.png', t2: '4º Clasif.', f2: 'supercopaitae.png' },
+                { id: 8, label: 'Semi 2', t1: '2º Clasif.', f1: 'supercopaitae.png', t2: '3º Clasif.', f2: 'supercopaitae.png' }
             ],
             final: [
-                { id: 9, label: '3º y 4º', t1: 'Perdedor S1', f1: 'supercopaitae.png', t2: 'Perdedor S2', f2: 'supercopaitae.png' },
+                { id: 9, label: '3º/4º', t1: 'Perdedor S1', f1: 'supercopaitae.png', t2: 'Perdedor S2', f2: 'supercopaitae.png' },
                 { id: 10, label: 'Final', t1: 'Ganador S1', f1: 'supercopaitae.png', t2: 'Ganador S2', f2: 'supercopaitae.png', isFinal: true }
             ]
         };
@@ -365,19 +357,19 @@
         function renderMatches(group, btn) {
             const container = document.getElementById('match-list');
             container.innerHTML = matches[group].map(m => `
-                <div class="glass p-7 rounded-[2.5rem] relative overflow-hidden ${m.isFinal ? 'border-2 border-gold shadow-[0_0_30px_rgba(212,175,55,0.4)]' : ''}">
+                <div class="glass p-8 rounded-[2.5rem] relative overflow-hidden ${m.isFinal ? 'border-2 border-gold shadow-[0_0_30px_rgba(212,175,55,0.4)]' : ''}">
                     <div class="flex justify-between items-center gap-2">
                         <div class="flex-1 flex flex-col items-center gap-3">
-                            <img src="${m.f1}" alt="${m.t1}" class="w-16 h-16 object-contain drop-shadow-lg">
-                            <p class="font-extrabold text-[11px] tracking-tighter uppercase text-center">${m.t1}</p>
+                            <img src="${m.f1}" alt="${m.t1}" class="w-20 h-20 object-contain">
+                            <p class="font-extrabold text-[12px] tracking-tighter uppercase text-center">${m.t1}</p>
                         </div>
                         <div class="flex flex-col items-center px-4 w-32">
-                            <span class="text-[10px] text-gold font-black mb-3 tracking-[0.2em] font-sport">${m.label}</span>
-                            <div class="bg-white/15 text-gold-light px-6 py-3 rounded-2xl font-black italic tracking-widest shadow-2xl border border-white/10 text-sm">VS</div>
+                            <span class="text-[11px] text-gold font-black mb-3 tracking-[0.2em] font-sport">${m.label}</span>
+                            <div class="bg-white/15 text-gold-light px-8 py-4 rounded-2xl font-black italic tracking-widest shadow-2xl border border-white/10 text-lg">VS</div>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-3">
-                            <img src="${m.f2}" alt="${m.t2}" class="w-16 h-16 object-contain drop-shadow-lg">
-                            <p class="font-extrabold text-[11px] tracking-tighter uppercase text-center">${m.t2}</p>
+                            <img src="${m.f2}" alt="${m.t2}" class="w-20 h-20 object-contain">
+                            <p class="font-extrabold text-[12px] tracking-tighter uppercase text-center">${m.t2}</p>
                         </div>
                     </div>
                 </div>
