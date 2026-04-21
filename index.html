@@ -62,8 +62,8 @@
 
         .team-card { transition: all 0.3s ease; }
         .team-card.open { border-color: var(--gold); background: rgba(212, 175, 55, 0.05); }
-        .player-drawer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-        .team-card.open .player-drawer { max-height: 600px; padding-top: 1.5rem; }
+        .player-drawer, .match-drawer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .team-card.open .player-drawer, .match-card.open .match-drawer { max-height: 600px; padding-top: 1rem; }
 
         .player-item {
             padding: 8px 12px;
@@ -99,6 +99,9 @@
             margin-bottom: 1rem;
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
+
+        .match-card { cursor: pointer; transition: all 0.2s; }
+        .match-card:active { transform: scale(0.98); }
     </style>
 </head>
 <body class="pb-28">
@@ -153,59 +156,21 @@
             </div>
 
             <div class="space-y-6">
-
                 <div class="glass p-5 rounded-2xl border-l-4 border-gold shadow-xl">
                     <div class="flex justify-between items-start mb-2">
                         <span class="news-badge">MERCADO</span>
                         <span class="text-[9px] text-gray-500 uppercase">03/04/2026 | 10:30</span>
                     </div>
                     <h3 class="font-bold text-sm mb-2 text-white italic uppercase">¡MOVIMIENTO EN LAS GACELAS: ENTRA JAIME, SALE HIRAM!</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed italic">Sorpresa de última hora en las plantillas. Las Gacelas anuncian la incorporación oficial de Jaime, quien ocupará el lugar que deja libre Hiram para disputar esta esperada Supercopa.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed italic">Sorpresa de última hora en las plantillas. Las Gacelas anuncian la incorporación oficial de Jaime, quien ocupará el lugar de Hiram.</p>
                 </div>
-                <div class="glass p-5 rounded-2xl border-l-4 border-gold shadow-xl">
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="news-badge">BOMBAZO</span>
-                        <span class="text-[9px] text-gray-500 uppercase">02/04/2026 | 13:05</span>
-                    </div>
-                    <img src="hassan.png" alt="Fichaje Hassan" class="news-img" onerror="this.style.display='none'">
-                    <h3 class="font-bold text-sm mb-2 text-white italic uppercase">¡HASSAN YA TIENE NUEVA CASA!</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed italic">Se desvela el misterio. El cotizadísimo agente libre ha firmado con los Aston Pila para esta Supercopa. ¡El mercado arde!</p>
                 </div>
-
-                <div class="glass p-5 rounded-2xl border-l-4 border-gold shadow-xl">
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="news-badge">ÚLTIMA HORA</span>
-                        <span class="text-[9px] text-gray-500 uppercase">02/04/2026 | 12:50</span>
-                    </div>
-                    <img src="rafi.png" alt="Fichaje Rafi" class="news-img" onerror="this.style.display='none'">
-                    <h3 class="font-bold text-sm mb-2 text-white italic uppercase">¡RAFI ABANDONA LA AGENCIA LIBRE!</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed italic">Las Gacelas se llevan el gato al agua. Rafi ya es oficialmente nuevo jugador del equipo tras una negociación exprés.</p>
-                </div>
-
-                <div class="glass p-5 rounded-2xl border-l-4 border-gold">
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="news-badge">EXCLUSIVA</span>
-                        <span class="text-[9px] text-gray-500 uppercase">31/03/2026 | 08:15</span>
-                    </div>
-                    <h3 class="font-bold text-sm mb-2 uppercase">IVÁN SANZ AL BANQUILLO DE PICK AND PLACE</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed italic uppercase">El nombramiento "se ha elegido a dedo", despertando el recelo de los rivales.</p>
-                </div>
-
-                <div class="glass p-5 rounded-2xl border-l-4 border-gray-600 opacity-80">
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">Comunicado</span>
-                        <span class="text-[9px] text-gray-500 uppercase">30/03/2026 | 20:48</span>
-                    </div>
-                    <h3 class="font-bold text-sm mb-2 uppercase tracking-tighter">Arranque de la competición</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed uppercase">Los capitanes confirman sus listas. La Supercopa de ITAE está a punto de comenzar.</p>
-                </div>
-            </div>
         </section>
 
         <section id="section-partidos" class="page-section">
             <div class="flex justify-between items-end mb-6">
-                <h2 class="font-sport text-xs tracking-widest text-gold-light">Horarios</h2>
-                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">SEASON 2026</span>
+                <h2 class="font-sport text-xs tracking-widest text-gold-light">Resultados</h2>
+                <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Torneo Finalizado</span>
             </div>
             <div class="flex gap-2 mb-6 overflow-x-auto pb-3 no-scrollbar border-b border-white/5">
                 <button onclick="renderMatches('jornadas', this)" class="active-tab-filter glass px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap">Jornadas</button>
@@ -298,7 +263,6 @@
                 <h2 class="font-sport text-xs tracking-widest text-gold-light">Equipo técnico</h2>
                 <span class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.3em]">Oficial</span>
             </div>
-            
             <div class="space-y-4">
                 <div class="glass p-5 rounded-2xl flex items-center gap-5 border-l-2 border-gold">
                     <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold shadow-[0_0_15px_rgba(212,175,55,0.2)]">
@@ -309,7 +273,6 @@
                         <p class="font-bold text-lg tracking-tight uppercase">Yeray</p>
                     </div>
                 </div>
-                
                 <div class="glass p-5 rounded-2xl flex items-center gap-5 border-l-2 border-gold">
                     <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold shadow-[0_0_15px_rgba(212,175,55,0.2)]">
                         <i class="fas fa-bullhorn text-xl"></i>
@@ -319,7 +282,6 @@
                         <p class="font-bold text-lg tracking-tight uppercase">Karol Di</p>
                     </div>
                 </div>
-
                 <div class="glass p-5 rounded-2xl flex items-center gap-5 border-l-2 border-gold">
                     <div class="w-14 h-14 bg-black/40 rounded-full flex items-center justify-center p-1 border border-gold/30">
                         <img src="pickandplace.png" alt="P&P Logo" class="w-full h-full object-contain">
@@ -335,67 +297,58 @@
     </main>
 
     <nav class="bottom-nav fixed bottom-6 left-1/2 -translate-x-1/2 w-[95%] h-18 glass rounded-full flex justify-around items-center px-4 z-50 border border-gold/10">
-        <button onclick="showPage('noticias', this)" class="nav-item active flex flex-col items-center gap-1">
-            <i class="fas fa-newspaper text-lg"></i>
-            <span class="text-[8px] uppercase font-bold font-sport">Noticias</span>
-        </button>
-        <button onclick="showPage('partidos', this)" class="nav-item flex flex-col items-center gap-1">
-            <i class="fas fa-calendar-alt text-lg"></i>
-            <span class="text-[8px] uppercase font-bold font-sport">Torneo</span>
-        </button>
-        <button onclick="showPage('equipos', this)" class="nav-item flex flex-col items-center gap-1">
-            <i class="fas fa-users-cog text-lg"></i>
-            <span class="text-[8px] uppercase font-bold font-sport">Equipos</span>
-        </button>
-        <button onclick="showPage('staff', this)" class="nav-item flex flex-col items-center gap-1">
-            <i class="fas fa-user-tie text-lg"></i>
-            <span class="text-[8px] uppercase font-bold font-sport">Técnico</span>
-        </button>
+        <button onclick="showPage('noticias', this)" class="nav-item active flex flex-col items-center gap-1"><i class="fas fa-newspaper text-lg"></i><span class="text-[8px] uppercase font-bold font-sport">Noticias</span></button>
+        <button onclick="showPage('partidos', this)" class="nav-item flex flex-col items-center gap-1"><i class="fas fa-calendar-alt text-lg"></i><span class="text-[8px] uppercase font-bold font-sport">Torneo</span></button>
+        <button onclick="showPage('equipos', this)" class="nav-item flex flex-col items-center gap-1"><i class="fas fa-users-cog text-lg"></i><span class="text-[8px] uppercase font-bold font-sport">Equipos</span></button>
+        <button onclick="showPage('staff', this)" class="nav-item flex flex-col items-center gap-1"><i class="fas fa-user-tie text-lg"></i><span class="text-[8px] uppercase font-bold font-sport">Técnico</span></button>
     </nav>
 
     <script>
         const matches = {
             jornadas: [
-                { id: 1, label: 'Jornada 1', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Broca Juniors', f2: 'brocajuniors.png' },
-                { id: 2, label: 'Jornada 2', t1: 'Aston Pila', f1: 'astonpila.png', t2: 'Pick & Place', f2: 'pickandplace.png' },
-                { id: 3, label: 'Jornada 3', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Aston Pila', f2: 'astonpila.png' },
-                { id: 4, label: 'Jornada 4', t1: 'Broca Juniors', f1: 'brocajuniors.png', t2: 'Pick & Place', f2: 'pickandplace.png' },
-                { id: 5, label: 'Jornada 5', t1: 'Pick & Place', f1: 'pickandplace.png', t2: 'Las Gacelas', f2: 'lasgacelas.png' },
-                { id: 6, label: 'Jornada 6', t1: 'Broca Juniors', f1: 'brocajuniors.png', t2: 'Aston Pila', f2: 'astonpila.png' }
+                { id: 1, label: 'J1', t1: 'Broca Jrs', f1: 'brocajuniors.png', t2: 'Las Gacelas', f2: 'lasgacelas.png', s1: 3, s2: 1, detail: 'Goles: Israel (2), Rafa. Amarilla: Israel. / Gacelas: Isaac.' },
+                { id: 2, label: 'J2', t1: 'Aston Pila', f1: 'astonpila.png', t2: 'Pick & Place', f2: 'pickandplace.png', s1: 2, s2: 2, detail: 'Aston: Santi, María (PP). / P&P: Pablo, María.' },
+                { id: 3, label: 'J3', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Aston Pila', f2: 'astonpila.png', s1: 5, s2: 1, detail: 'Gacelas: Isaac (4), Gacela. Amarilla: Valentino. / Aston: Moad. Amarilla: Hassan.' },
+                { id: 4, label: 'J4', t1: 'Broca Jrs', f1: 'brocajuniors.png', t2: 'Pick & Place', f2: 'pickandplace.png', s1: 3, s2: 1, detail: 'Broca: Rafa, William, Israel. Amarilla: William. / P&P: Pablo.' },
+                { id: 5, label: 'J5', t1: 'Pick & Place', f1: 'pickandplace.png', t2: 'Las Gacelas', f2: 'lasgacelas.png', s1: 3, s2: 4, detail: 'P&P: María, Juan (2). / Gacelas: Isaac (3), Ester (PP).' },
+                { id: 6, label: 'J6', t1: 'Broca Jrs', f1: 'brocajuniors.png', t2: 'Aston Pila', f2: 'astonpila.png', s1: 2, s2: 3, detail: 'Broca: Rafa, William. PP: Jorge. / Aston: Iván, Jesús. Amarilla: Santi.' }
             ],
             semis: [
-                { id: 7, label: 'Semifinal 1', t1: '1º Clasif.', f1: 'supercopaitae.png', t2: '4º Clasif.', f2: 'supercopaitae.png' },
-                { id: 8, label: 'Semifinal 2', t1: '2º Clasif.', f1: 'supercopaitae.png', t2: '3º Clasif.', f2: 'supercopaitae.png' }
+                { id: 7, label: 'Semi 1', t1: 'Broca Jrs', f1: 'brocajuniors.png', t2: 'Pick & Place', f2: 'pickandplace.png', s1: 4, s2: 2, detail: 'Broca: Rafa (2), Salva (2). / P&P: Juan (2).' },
+                { id: 8, label: 'Semi 2', t1: 'Aston Pila', f1: 'astonpila.png', t2: 'Las Gacelas', f2: 'lasgacelas.png', s1: 3, s2: 2, detail: 'Aston: Santi (3). / Gacelas: Isaac (2).' }
             ],
             final: [
-                { id: 9, label: '3º/4º', t1: 'Perdedor S1', f1: 'supercopaitae.png', t2: 'Perdedor S2', f2: 'supercopaitae.png' },
-                { id: 10, label: 'Final', t1: 'Ganador S1', f1: 'supercopaitae.png', t2: 'Ganador S2', f2: 'supercopaitae.png', isFinal: true }
+                { id: 9, label: '3º/4º', t1: 'Las Gacelas', f1: 'lasgacelas.png', t2: 'Pick & Place', f2: 'pickandplace.png', s1: 5, s2: 4, detail: 'Gacelas: Isaac (4), Gacela. Amarilla: Isaac. / P&P: Ester, Juan, María, Pablo.' },
+                { id: 10, label: 'Final', t1: 'Broca Jrs', f1: 'brocajuniors.png', t2: 'Aston Pila', f2: 'astonpila.png', s1: 6, s2: 1, detail: 'Broca: Rafa (4), William, Salva. / Aston: Moad.', isFinal: true }
             ]
         };
 
         function renderMatches(group, btn) {
             const container = document.getElementById('match-list');
             container.innerHTML = matches[group].map(m => `
-                <div class="glass p-5 rounded-3xl relative overflow-hidden ${m.isFinal ? 'border-2 border-gold shadow-[0_0_20px_rgba(212,175,55,0.4)]' : ''}">
+                <div class="match-card glass p-5 rounded-3xl relative overflow-hidden ${m.isFinal ? 'border-2 border-gold' : ''}" onclick="this.classList.toggle('open')">
                     <div class="flex justify-between items-center gap-1">
                         <div class="flex-1 flex flex-col items-center gap-2">
-                            <img src="${m.f1}" alt="${m.t1}" class="w-12 h-12 object-contain drop-shadow-md">
-                            <p class="font-bold text-[10px] tracking-tighter uppercase text-center">${m.t1}</p>
+                            <img src="${m.f1}" class="w-10 h-10 object-contain">
+                            <p class="font-bold text-[9px] uppercase text-center">${m.t1}</p>
                         </div>
-                        <div class="flex flex-col items-center px-4 w-32">
-                            <span class="text-[10px] text-gold font-black mb-3 tracking-[0.2em] font-sport">${m.label}</span>
-                            <div class="bg-white/10 text-gold-light px-5 py-2 rounded-lg font-black italic tracking-widest shadow-xl border border-white/5 text-xs">VS</div>
+                        <div class="flex flex-col items-center px-2 w-24">
+                            <span class="text-[8px] text-gold font-bold mb-1 font-sport">${m.label}</span>
+                            <div class="bg-white/10 text-white px-3 py-1 rounded-lg font-black tracking-widest border border-white/5 text-lg">
+                                ${m.s1} - ${m.s2}
+                            </div>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-2">
-                            <img src="${m.f2}" alt="${m.t2}" class="w-12 h-12 object-contain drop-shadow-md">
-                            <p class="font-bold text-[10px] tracking-tighter uppercase text-center">${m.t2}</p>
+                            <img src="${m.f2}" class="w-10 h-10 object-contain">
+                            <p class="font-bold text-[9px] uppercase text-center">${m.t2}</p>
                         </div>
+                    </div>
+                    <div class="match-drawer text-[10px] text-gray-400 border-t border-white/5 mt-2 pt-2 italic text-center">
+                        ${m.detail}
                     </div>
                 </div>
             `).join('');
-            document.querySelectorAll('#section-partidos button').forEach(b => {
-                b.className = 'glass text-gray-400 px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap';
-            });
+            document.querySelectorAll('#section-partidos button').forEach(b => b.className = 'glass text-gray-400 px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap');
             btn.className = 'active-tab-filter glass px-5 py-2 rounded-full text-[10px] uppercase font-bold tracking-wider whitespace-nowrap';
         }
 
